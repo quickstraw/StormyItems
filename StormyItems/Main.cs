@@ -4,6 +4,8 @@ using R2API;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 namespace HaloItem
@@ -17,7 +19,7 @@ namespace HaloItem
 
     //This attribute is required, and lists metadata for your plugin.
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     //We will be using 2 modules from R2API: ItemAPI to add our item and LanguageAPI to add our language tokens.
     [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI), nameof(RecalculateStatsAPI))]
 
@@ -34,7 +36,7 @@ namespace HaloItem
         public const string PluginName = "CrackedHaloItem";
         public const string PluginVersion = "0.0.1";
 
-        private ItemBase[] items;
+        public List<ItemBase> Items = new List<ItemBase>();
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -44,14 +46,16 @@ namespace HaloItem
             PInfo = Info;
             Assets.Init();
 
-            items = new ItemBase[] {
-                // Add Items here
-                new CrackedHalo()
-            };
+            //This section automatically scans the project for all items
+            var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
 
-            foreach (ItemBase ib in items)
+            foreach (var itemType in ItemTypes)
             {
-                ib.Init();
+                ItemBase item = (ItemBase)System.Activator.CreateInstance(itemType);
+                if (ValidateItem(item, Items))
+                {
+                    item.Init(Config);
+                }
             }
 
             // This line of log will appear in the bepinex console when the Awake method is done.
@@ -61,7 +65,7 @@ namespace HaloItem
         //The Update() method is run on every frame of the game.
         private void Update()
         {
-            foreach(ItemBase ib in items)
+            foreach(ItemBase ib in Items)
             {
                 ib.OnUpdate();
             }
@@ -69,10 +73,31 @@ namespace HaloItem
 
         private void FixedUpdate()
         {
-            foreach (ItemBase ib in items)
+            foreach (ItemBase ib in Items)
             {
                 ib.OnFixedUpdate();
             }
+        }
+
+        /// <summary>
+        /// A helper to easily set up and initialize an item from your item classes if the user has it enabled in their configuration files.
+        /// <para>Additionally, it generates a configuration for each item to allow blacklisting it from AI.</para>
+        /// </summary>
+        /// <param name="item">A new instance of an ItemBase class."</param>
+        /// <param name="itemList">The list you would like to add this to if it passes the config check.</param>
+        public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
+        {
+            var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
+            var aiBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?").Value;
+            if (enabled)
+            {
+                itemList.Add(item);
+                if (aiBlacklist)
+                {
+                    item.AIBlacklisted = true;
+                }
+            }
+            return enabled;
         }
 
     }
