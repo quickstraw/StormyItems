@@ -9,8 +9,6 @@ namespace HaloItem.Items
 {
     public class CrackedHalo : ItemBase
 	{
-
-        private bool providingBuff;
         private static BuffDef buffDef;
 
         public override string ItemName => "Cracked Halo";
@@ -19,7 +17,7 @@ namespace HaloItem.Items
 
         public override string ItemPickupDesc => "Increases movement speed when in the air.";
 
-        public override string ItemFullDescription => "Being in the air increases your movement speed by <style=cIsUtility>20%</style> <style=cStack>(+20% per stack)</style>.";
+        public override string ItemFullDescription => "Being in the air increases your movement speed by <style=cIsUtility>21%</style> <style=cStack>(+21% per stack)</style>.";
 
         public override string ItemLore => "A fallen angels misfortune is your gain.";
 
@@ -54,7 +52,7 @@ namespace HaloItem.Items
             int haloCount = body.inventory.GetItemCount(ItemDef);
             if(haloCount > 0 && !body.characterMotor.isGrounded)
             {
-                args.moveSpeedMultAdd += (0.20f * haloCount);
+                args.moveSpeedMultAdd += (0.21f * haloCount);
             }
         }
 
