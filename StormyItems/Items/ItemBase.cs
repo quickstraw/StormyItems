@@ -4,7 +4,17 @@ using System.Text;
 
 namespace HaloItem.Items
 {
-    class ItemBase
+    abstract class ItemBase
     {
+        public abstract void Init();
+        public void OnUpdate()
+        {
+
+        }
+
+        public void OnFixedUpdate()
+        {
+
+        }
     }
 }

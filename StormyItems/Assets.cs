@@ -28,7 +28,7 @@ namespace HaloItem
 			get
 			{
 				//This returns the path to your assetbundle assuming said bundle is on the same folder as your DLL. If you have your bundle in a folder, you can uncomment the statement below this one.
-				return Path.Combine(Path.GetDirectoryName(CrackedHalo.PInfo.Location), bundleName);
+				return Path.Combine(Path.GetDirectoryName(Main.PInfo.Location), bundleName);
 				//return Path.Combine(MainClass.PInfo.Location, assetBundleFolder, myBundle);
 			}
 		}

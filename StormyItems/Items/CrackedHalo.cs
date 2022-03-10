@@ -4,7 +4,7 @@ using R2API.Utils;
 using RoR2;
 using UnityEngine;
 
-namespace HaloItem
+namespace HaloItem.Items
 {
 	//This is an example plugin that can be put in BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
     //It's a small plugin that adds a relatively simple item to the game, and gives you that item whenever you press F2.
@@ -13,24 +13,10 @@ namespace HaloItem
     //You don't need this if you're not using R2API in your plugin, it's just to tell BepInEx to initialize R2API before this plugin so it's safe to use R2API.
     [BepInDependency(R2API.R2API.PluginGUID)]
 	
-	//This attribute is required, and lists metadata for your plugin.
-    [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-	
-	//We will be using 2 modules from R2API: ItemAPI to add our item and LanguageAPI to add our language tokens.
-    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI), nameof(RecalculateStatsAPI))]
-	
 	//This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
-    public class CrackedHalo : BaseUnityPlugin
+    public class CrackedHalo : ItemBase
 	{
-        public static PluginInfo PInfo { get; private set; }
-
-        //The Plugin GUID should be a unique ID for this plugin, which is human readable (as it is used in places like the config).
-        //If we see this PluginGUID as it is on thunderstore, we will deprecate this mod. Change the PluginAuthor and the PluginName !
-        public const string PluginGUID = PluginAuthor + "." + PluginName;
-        public const string PluginAuthor = "Quickstraw";
-        public const string PluginName = "CrackedHaloItem";
-        public const string PluginVersion = "0.0.1";
 
 		//We need our item definition to persist through our functions, and therefore make it a class field.
         private static ItemDef myItemDef;
@@ -38,14 +24,9 @@ namespace HaloItem
         private bool providingBuff;
         private static BuffDef buffDef;
 
-		//The Awake() method is run at the very start when the game is initialized.
-        public void Awake()
+		//Call Init() in main class
+        public override void Init()
         {
-            //Init our logging class so that we can properly log for debugging
-            Log.Init(Logger);
-            PInfo = Info;
-            Assets.Init();
-
             //First let's define our item
             myItemDef = ScriptableObject.CreateInstance<ItemDef>();
 
@@ -95,9 +76,6 @@ namespace HaloItem
 
             //But now we have defined an item, but it doesn't do anything yet. So we'll need to define that ourselves.
             RecalculateStatsAPI.GetStatCoefficients += OnGetStatCoefficients;
-
-            // This line of log will appear in the bepinex console when the Awake method is done.
-            Log.LogInfo(nameof(Awake) + " done.");
         }
 
         private static void OnGetStatCoefficients(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
@@ -125,8 +103,7 @@ namespace HaloItem
             LanguageAPI.Add("CRACKED_HALO_LORE", "A fallen angels misfortune is your gain.");
         }
 
-        //The Update() method is run on every frame of the game.
-        private void Update()
+        public override void OnUpdate()
         {
             //This if statement checks if the player has currently pressed F2.
             if (Input.GetKeyDown(KeyCode.F2))
@@ -141,7 +118,7 @@ namespace HaloItem
             }
         }
 
-        private void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             //ProvideBuff();
         }
