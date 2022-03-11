@@ -65,8 +65,12 @@ namespace StormyItems.Items
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
             ItemBodyModelPrefab = Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo_display.prefab");
+            //ItemBodyModelPrefab = ItemModel;
             var itemDisplay = ItemBodyModelPrefab.AddComponent<ItemDisplay>();
-            itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
+            //itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
+
+            //var itemDisplay2 = ItemModel.AddComponent<ItemDisplay>();
+            //itemDisplay2.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemModel);
 
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
             rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]
@@ -195,6 +199,7 @@ namespace StormyItems.Items
 
         public override void OnUpdate()
         {
+            /**
             //This if statement checks if the player has currently pressed F2.
             if (Input.GetKeyDown(KeyCode.F2))
             {
@@ -206,6 +211,7 @@ namespace StormyItems.Items
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ItemDef.itemIndex), transform.position, transform.forward * 20f);
             }
+    **/
         }
 
         public override void OnFixedUpdate()
@@ -215,22 +221,25 @@ namespace StormyItems.Items
 
         private void ProvideBuff()
         {
-            CharacterBody currChar = PlayerCharacterMasterController.instances[0].master.GetBody();
-            int haloCount = currChar.inventory.GetItemCount(ItemDef.itemIndex);
-
-            if (haloCount > 0 && !currChar.characterMotor.isGrounded)
+            if(PlayerCharacterMasterController.instances.Count > 0&& PlayerCharacterMasterController.instances[0].master.GetBody() != null)
             {
-                currChar.AddBuff(buffDef);
-                
-            }
+                CharacterBody currChar = PlayerCharacterMasterController.instances[0].master.GetBody();
+                int haloCount = currChar.inventory.GetItemCount(ItemDef.itemIndex);
 
-            if (currChar.HasBuff(buffDef))
-            {
-                if (haloCount <= 0 || currChar.characterMotor.isGrounded)
+                if (haloCount > 0 && !currChar.characterMotor.isGrounded)
                 {
-                    // Set dirty bit to recalculate stats
-                    currChar.SetDirtyBit(1);
-                    currChar.RemoveBuff(buffDef);
+                    currChar.AddBuff(buffDef);
+
+                }
+
+                if (currChar.HasBuff(buffDef))
+                {
+                    if (haloCount <= 0 || currChar.characterMotor.isGrounded)
+                    {
+                        // Set dirty bit to recalculate stats
+                        currChar.SetDirtyBit(1);
+                        currChar.RemoveBuff(buffDef);
+                    }
                 }
             }
         }

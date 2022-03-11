@@ -35,6 +35,22 @@ namespace StormyItems.Items
         {
             CreateLang();
             CreateItem();
+
+            RecalculateStatsAPI.GetStatCoefficients += OnGetStatCoefficients;
         }
+
+        
+        private void OnGetStatCoefficients(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (body != null && args != null && body.inventory != null)
+            {
+                int anchorCount = GetCount(body);
+                if (anchorCount > 0 && body.characterMotor != null && body.moveSpeed <= 0)
+                {
+                    args.armorAdd += (60 * anchorCount);
+                }
+            }
+        }
+
     }
 }
