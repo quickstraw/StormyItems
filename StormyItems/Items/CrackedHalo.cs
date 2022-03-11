@@ -52,16 +52,19 @@ namespace StormyItems.Items
 
         private void OnGetStatCoefficients(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            int haloCount = body.inventory.GetItemCount(ItemDef);
-            if(haloCount > 0 && !body.characterMotor.isGrounded)
+            if(body != null && args != null && body.inventory != null)
             {
-                args.moveSpeedMultAdd += (0.21f * haloCount);
+                int haloCount = body.inventory.GetItemCount(ItemDef);
+                if (haloCount > 0 && body.characterMotor != null && !body.characterMotor.isGrounded)
+                {
+                    args.moveSpeedMultAdd += (0.21f * haloCount);
+                }
             }
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
-            ItemBodyModelPrefab = ItemModel;
+            ItemBodyModelPrefab = Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo_display.prefab");
             var itemDisplay = ItemBodyModelPrefab.AddComponent<ItemDisplay>();
             itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
 
@@ -73,9 +76,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
+                    localPos = new Vector3(0,0,1.0f),
                     localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localScale = new Vector3(2f,2f,2f)
                 }
             });
             rules.Add("mdlHuntress", new RoR2.ItemDisplayRule[]
@@ -187,7 +190,7 @@ namespace StormyItems.Items
                 }
             });
 
-            return new ItemDisplayRuleDict();
+            return rules;
         }
 
         public override void OnUpdate()

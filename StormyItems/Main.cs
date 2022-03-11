@@ -21,7 +21,7 @@ namespace StormyItems
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     //We will be using 2 modules from R2API: ItemAPI to add our item and LanguageAPI to add our language tokens.
-    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI), nameof(RecalculateStatsAPI))]
+    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI), nameof(RecalculateStatsAPI), nameof(PrefabAPI))]
 
     //This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
@@ -65,17 +65,23 @@ namespace StormyItems
         //The Update() method is run on every frame of the game.
         private void Update()
         {
-            foreach(ItemBase ib in Items)
+            if (PlayerCharacterMasterController.instances.Count > 0)
             {
-                ib.OnUpdate();
+                foreach (ItemBase ib in Items)
+                {
+                    ib.OnUpdate();
+                }
             }
         }
 
         private void FixedUpdate()
         {
-            foreach (ItemBase ib in Items)
+            if (PlayerCharacterMasterController.instances.Count > 0)
             {
-                ib.OnFixedUpdate();
+                foreach (ItemBase ib in Items)
+                {
+                    ib.OnFixedUpdate();
+                }
             }
         }
 

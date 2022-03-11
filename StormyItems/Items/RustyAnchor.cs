@@ -20,7 +20,7 @@ namespace StormyItems.Items
 
         public override string ItemLore => "";
 
-        public override ItemTier Tier => ItemTier.Tier2;
+        public override ItemTier Tier => ItemTier.Tier1;
 
         public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/rusty_anchor/RustyAnchor.prefab");
 
