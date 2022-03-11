@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using R2API;
 using UnityEngine;
 
-namespace HaloItem.Items
+namespace StormyItems.Items
 {
     public abstract class ItemBase
     {

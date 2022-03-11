@@ -1,6 +1,6 @@
 ﻿using BepInEx.Logging;
 
-namespace HaloItem
+namespace StormyItems
 {
     internal static class Log
     {

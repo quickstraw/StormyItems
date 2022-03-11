@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using HaloItem.Items;
+using StormyItems.Items;
 using R2API;
 using R2API.Utils;
 using RoR2;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace HaloItem
+namespace StormyItems
 {
     //This is an example plugin that can be put in BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
     //It's a small plugin that adds a relatively simple item to the game, and gives you that item whenever you press F2.

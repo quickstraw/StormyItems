@@ -4,11 +4,14 @@ using R2API;
 using R2API.Utils;
 using RoR2;
 using UnityEngine;
+using StormyItems.Utils;
 
-namespace HaloItem.Items
+
+namespace StormyItems.Items
 {
     public class CrackedHalo : ItemBase
 	{
+        public static GameObject ItemBodyModelPrefab;
         private static BuffDef buffDef;
 
         public override string ItemName => "Cracked Halo";
@@ -23,9 +26,9 @@ namespace HaloItem.Items
 
         public override ItemTier Tier => ItemTier.Tier1;
 
-        public override GameObject ItemModel => Assets.mainBundle.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo.prefab");
+        public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo.prefab");
 
-        public override Sprite ItemIcon => Assets.mainBundle.LoadAsset<Sprite>("Assets/Import/cracked_halo_icon/CrackedHaloIcon.png");
+        public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/cracked_halo_icon/CrackedHaloIcon.png");
 
 
         //Call Init() in main class
@@ -58,6 +61,132 @@ namespace HaloItem.Items
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
+            ItemBodyModelPrefab = ItemModel;
+            var itemDisplay = ItemBodyModelPrefab.AddComponent<ItemDisplay>();
+            itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
+
+            ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
+            rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlHuntress", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlToolbot", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlEngi", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlMerc", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlTreebot", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlLoader", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlCroco", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlCaptain", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+            rules.Add("mdlBandit2", new RoR2.ItemDisplayRule[]
+            {
+                new RoR2.ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = ItemBodyModelPrefab,
+                    childName = "Head",
+                    localPos = new Vector3(0,0,0),
+                    localAngles = new Vector3(0,0,0),
+                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                }
+            });
+
             return new ItemDisplayRuleDict();
         }
 
