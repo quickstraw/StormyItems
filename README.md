@@ -1,9 +1,9 @@
 # My first mod
 
-Description.
+Adds items that try to enhance alternative ways to play the game.
 
 ## Changelog
 
-**1.0.0**
+**0.0.1**
 
-* Release of my first mod.
+* First release of Stormy Items.
