@@ -20,7 +20,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Increases movement speed when in the air.";
 
-        public override string ItemFullDescription => "Being in the air increases your movement speed by <style=cIsUtility>21%</style> <style=cStack>(+21% per stack)</style>.";
+        public override string ItemFullDescription => "Being in the air increases your movement speed by <style=cIsUtility>25%</style> <style=cStack>(+25% per stack)</style>.";
 
         public override string ItemLore => "A fallen angels misfortune is your gain.";
 
@@ -57,7 +57,7 @@ namespace StormyItems.Items
                 int haloCount = body.inventory.GetItemCount(ItemDef);
                 if (haloCount > 0 && body.characterMotor != null && !body.characterMotor.isGrounded)
                 {
-                    args.moveSpeedMultAdd += (0.21f * haloCount);
+                    args.moveSpeedMultAdd += (0.25f * haloCount);
                 }
             }
         }
@@ -199,7 +199,6 @@ namespace StormyItems.Items
 
         public override void OnUpdate()
         {
-            /**
             //This if statement checks if the player has currently pressed F2.
             if (Input.GetKeyDown(KeyCode.F2))
             {
@@ -211,7 +210,6 @@ namespace StormyItems.Items
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ItemDef.itemIndex), transform.position, transform.forward * 20f);
             }
-    **/
         }
 
         public override void OnFixedUpdate()

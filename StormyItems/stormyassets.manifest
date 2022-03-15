@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3232907702
+CRC: 3653108082
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f8ec38eed0593a6f8827edef1dad7225
+    Hash: 81c5c833fbb73b5324c655b16c98a7ef
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fe3abd029edb3522ae5dbbc711d0a74
@@ -33,5 +33,7 @@ Assets:
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
 - Assets/Import/rusty_anchor_icon/RustyAnchorIcon.png
+- Assets/Import/sharp_anchor_icon/SharpAnchorIcon.png
+- Assets/Import/sharp_anchor/SharpAnchor.prefab
 - Assets/Import/cracked_halo/crackedhalo.prefab
 Dependencies: []
