@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3653108082
+CRC: 360205836
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 81c5c833fbb73b5324c655b16c98a7ef
+    Hash: 003c667b8d9b5e8b5b252ea8d1a02947
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1fe3abd029edb3522ae5dbbc711d0a74
+    Hash: 3f3b2b29dd295705ecd8fdf225ffa69e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,6 +25,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
@@ -33,7 +35,8 @@ Assets:
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
 - Assets/Import/rusty_anchor_icon/RustyAnchorIcon.png
-- Assets/Import/sharp_anchor_icon/SharpAnchorIcon.png
-- Assets/Import/sharp_anchor/SharpAnchor.prefab
+- Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png
+- Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab
+- Assets/Import/SharpAnchor/sharp_anchor/SharpAnchor.prefab
 - Assets/Import/cracked_halo/crackedhalo.prefab
 Dependencies: []

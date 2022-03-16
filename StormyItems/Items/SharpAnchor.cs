@@ -22,9 +22,9 @@ namespace StormyItems.Items
 
         public override ItemTier Tier => ItemTier.Tier1;
 
-        public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/sharp_anchor/SharpAnchor.prefab");
+        public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/SharpAnchor/sharp_anchor/SharpAnchor.prefab");
 
-        public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/sharp_anchor_icon/SharpAnchorIcon.png");
+        public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png");
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
