@@ -330,4 +330,15 @@ ASALocalRun/
 .mfractor/
 /StormyItems/libs/Unity.Addressables.dll
 
-lib/
+/StormyItems/lib/Facepunch.Steamworks.dll
+/StormyItems/lib/KdTreeLib.dll
+/StormyItems/lib/KinematicCharacterController.dll
+/StormyItems/lib/Mono.Security.dll
+/StormyItems/lib/pb_Stl.dll
+/StormyItems/lib/Poly2Tri.dll
+/StormyItems/lib/ProBuilderCore.dll
+/StormyItems/lib/ProBuilderMeshOps.dll
+/StormyItems/lib/Rewired_Windows_Lib.dll
+/StormyItems/lib/SimpleJSON.dll
+/StormyItems/lib/Wwise.dll
+/StormyItems/lib/Zio.dll
