@@ -330,15 +330,15 @@ ASALocalRun/
 .mfractor/
 /StormyItems/libs/Unity.Addressables.dll
 
-/StormyItems/lib/Facepunch.Steamworks.dll
-/StormyItems/lib/KdTreeLib.dll
-/StormyItems/lib/KinematicCharacterController.dll
-/StormyItems/lib/Mono.Security.dll
-/StormyItems/lib/pb_Stl.dll
-/StormyItems/lib/Poly2Tri.dll
-/StormyItems/lib/ProBuilderCore.dll
-/StormyItems/lib/ProBuilderMeshOps.dll
-/StormyItems/lib/Rewired_Windows_Lib.dll
-/StormyItems/lib/SimpleJSON.dll
-/StormyItems/lib/Wwise.dll
-/StormyItems/lib/Zio.dll
+/StormyItems/libs/Facepunch.Steamworks.dll
+/StormyItems/libs/KdTreeLib.dll
+/StormyItems/libs/KinematicCharacterController.dll
+/StormyItems/libs/Mono.Security.dll
+/StormyItems/libs/pb_Stl.dll
+/StormyItems/libs/Poly2Tri.dll
+/StormyItems/libs/ProBuilderCore.dll
+/StormyItems/libs/ProBuilderMeshOps.dll
+/StormyItems/libs/Rewired_Windows_Lib.dll
+/StormyItems/libs/SimpleJSON.dll
+/StormyItems/libs/Wwise.dll
+/StormyItems/libs/Zio.dll
