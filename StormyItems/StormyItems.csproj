@@ -90,4 +90,9 @@
     <Folder Include="Utils\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="libs\MMHOOK_RoR2.dll" />
+    <None Include="libs\R2API.dll" />
+  </ItemGroup>
+
 </Project>

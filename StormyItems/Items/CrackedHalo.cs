@@ -64,13 +64,14 @@ namespace StormyItems.Items
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
-            ItemBodyModelPrefab = Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo_display.prefab");
+            ItemBodyModelPrefab = ItemModel;//Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo_display.prefab");
             //ItemBodyModelPrefab = ItemModel;
             var itemDisplay = ItemBodyModelPrefab.AddComponent<ItemDisplay>();
-            //itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
+            itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
 
             //var itemDisplay2 = ItemModel.AddComponent<ItemDisplay>();
             //itemDisplay2.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemModel);
+            
 
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
             rules.Add("mdlCommandoDualies", new RoR2.ItemDisplayRule[]
