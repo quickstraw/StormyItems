@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 360205836
+CRC: 393861971
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 003c667b8d9b5e8b5b252ea8d1a02947
+    Hash: 711475e8b96f659a6031ba1f6c368899
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3f3b2b29dd295705ecd8fdf225ffa69e
@@ -31,12 +31,16 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Import/rusty_anchor/RustyAnchor.prefab
+- Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZoneV2.png
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
-- Assets/Import/rusty_anchor_icon/RustyAnchorIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab
 - Assets/Import/SharpAnchor/sharp_anchor/SharpAnchor.prefab
+- Assets/Import/cracked_halo/materials/cracked_halo_mat.mat
+- Assets/Import/cracked_halo/meshes/CrackedHalo.obj
+- Assets/Import/SharpAnchor/sharp_anchor_zone/texRampHealing.png
+- Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZone.png
 - Assets/Import/cracked_halo/crackedhalo.prefab
+- Assets/Import/cracked_halo/textures/CrackedHalo_tex.png
 Dependencies: []

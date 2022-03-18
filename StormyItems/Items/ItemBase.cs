@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using R2API;
 using UnityEngine;
+using RoR2.Items;
 
 namespace StormyItems.Items
 {
@@ -27,7 +28,7 @@ namespace StormyItems.Items
 
         public virtual bool AIBlacklisted { get; set; } = false;
 
-        public abstract void Init(ConfigFile config);
+        public abstract void StartInit(ConfigFile config);
         public virtual void CreateConfig(ConfigFile config) { }
         public virtual void OnUpdate()
         {
@@ -86,6 +87,16 @@ namespace StormyItems.Items
             if (ItemTags.Length > 0) { ItemDef.tags = ItemTags; }
 
             ItemAPI.Add(new CustomItem(ItemDef, CreateItemDisplayRules()));
+        }
+
+        public virtual void OnBodyAdded(CharacterBody body)
+        {
+
+        }
+
+        public virtual void OnBodyRemoved(CharacterBody body, int index)
+        {
+
         }
     }
 }

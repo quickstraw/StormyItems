@@ -32,7 +32,7 @@ namespace StormyItems.Items
 
 
         //Call Init() in main class
-        public override void Init(ConfigFile config)
+        public override void StartInit(ConfigFile config)
         {
             CreateLang();
             CreateItem();
@@ -80,9 +80,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,1.0f),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(2f,2f,2f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlHuntress", new RoR2.ItemDisplayRule[]
@@ -199,6 +199,7 @@ namespace StormyItems.Items
 
         public override void OnUpdate()
         {
+            /**
             //This if statement checks if the player has currently pressed F2.
             if (Input.GetKeyDown(KeyCode.F2))
             {
@@ -210,6 +211,7 @@ namespace StormyItems.Items
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ItemDef.itemIndex), transform.position, transform.forward * 20f);
             }
+    **/
         }
 
         public override void OnFixedUpdate()
@@ -219,15 +221,24 @@ namespace StormyItems.Items
 
         private void ProvideBuff()
         {
-            if(PlayerCharacterMasterController.instances.Count > 0&& PlayerCharacterMasterController.instances[0].master.GetBody() != null)
+            if(!(PlayerCharacterMasterController.instances.Count > 0 && PlayerCharacterMasterController.instances[0].master.GetBody() != null))
             {
-                CharacterBody currChar = PlayerCharacterMasterController.instances[0].master.GetBody();
+                return;
+            }
+            for(int i = 0; i < Main.CharBodies.Count; i++)
+            {
+                CharacterBody currChar = Main.CharBodies[i];
+
+                if(currChar.inventory == null)
+                {
+                    continue;
+                }
+
                 int haloCount = currChar.inventory.GetItemCount(ItemDef.itemIndex);
 
                 if (haloCount > 0 && !currChar.characterMotor.isGrounded)
                 {
                     currChar.AddBuff(buffDef);
-
                 }
 
                 if (currChar.HasBuff(buffDef))
@@ -235,7 +246,7 @@ namespace StormyItems.Items
                     if (haloCount <= 0 || currChar.characterMotor.isGrounded)
                     {
                         // Set dirty bit to recalculate stats
-                        currChar.SetDirtyBit(1);
+                        currChar.MarkAllStatsDirty();
                         currChar.RemoveBuff(buffDef);
                     }
                 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using System;
 
 namespace StormyItems
 {
@@ -33,18 +34,17 @@ namespace StormyItems
         //If we see this PluginGUID as it is on thunderstore, we will deprecate this mod. Change the PluginAuthor and the PluginName !
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
-        public const string PluginName = "CrackedHaloItem";
+        public const string PluginName = "StormyItems";
         public const string PluginVersion = "0.0.1";
 
-        public List<ItemBase> Items = new List<ItemBase>();
+        public static List<CharacterBody> CharBodies = new List<CharacterBody>();
 
-        //The Awake() method is run at the very start when the game is initialized.
-        public void Awake()
+        public static List<ItemBase> Items;
+
+        public void Start()
         {
-            //Init our logging class so that we can properly log for debugging
-            Log.Init(Logger);
-            PInfo = Info;
             Assets.Init();
+            Assets.Start();
 
             //This section automatically scans the project for all items
             var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
@@ -54,9 +54,21 @@ namespace StormyItems
                 ItemBase item = (ItemBase)System.Activator.CreateInstance(itemType);
                 if (ValidateItem(item, Items))
                 {
-                    item.Init(Config);
+                    item.StartInit(Config);
                 }
             }
+        }
+
+        //The Awake() method is run at the very start when the game is initialized.
+        public void Awake()
+        {
+            //Init our logging class so that we can properly log for debugging
+            Log.Init(Logger);
+            PInfo = Info;
+            Items = new List<ItemBase>();
+
+            CharacterBody.onBodyStartGlobal += CollectBodies;
+            CharacterBody.onBodyDestroyGlobal += DestroyBodies;
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -65,7 +77,7 @@ namespace StormyItems
         //The Update() method is run on every frame of the game.
         private void Update()
         {
-            if (PlayerCharacterMasterController.instances.Count > 0)
+            if (PlayerCharacterMasterController.instances != null && PlayerCharacterMasterController.instances.Count > 0)
             {
                 foreach (ItemBase ib in Items)
                 {
@@ -76,12 +88,19 @@ namespace StormyItems
 
         private void FixedUpdate()
         {
-            if (PlayerCharacterMasterController.instances.Count > 0)
+            try
             {
-                foreach (ItemBase ib in Items)
+                if (PlayerCharacterMasterController.instances != null && PlayerCharacterMasterController.instances.Count > 0 && Items != null)
                 {
-                    ib.OnFixedUpdate();
+                    foreach (ItemBase ib in Items)
+                    {
+                        ib.OnFixedUpdate();
+                    }
                 }
+            }
+            catch (NullReferenceException e)
+            {
+                Log.LogError(e.StackTrace);
             }
         }
 
@@ -104,6 +123,33 @@ namespace StormyItems
                 }
             }
             return enabled;
+        }
+
+        private void CollectBodies(CharacterBody body)
+        {
+            CharBodies.Add(body);
+            foreach (ItemBase ib in Items)
+            {
+                ib.OnBodyAdded(body);
+            }
+        }
+
+        private void DestroyBodies(CharacterBody body)
+        {
+            int index = 0;
+            for (int i = CharBodies.Count - 1; i >= 0; i--)
+            {
+                if (CharBodies[i] == body)
+                {
+                    CharBodies.RemoveAt(i);
+                    index = i;
+                    break;
+                }
+            }
+            foreach (ItemBase ib in Items)
+            {
+                ib.OnBodyRemoved(body, index);
+            }
         }
 
     }

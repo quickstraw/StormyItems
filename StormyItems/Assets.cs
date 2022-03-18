@@ -10,6 +10,8 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using System.Reflection;
 using System.Linq;
+using StormyItems.Materials;
+using RoR2;
 
 namespace StormyItems
 {
@@ -29,6 +31,25 @@ namespace StormyItems
 			{"fake ror/hopoo games/deferred/snow topped", "shaders/deferred/hgsnowtopped" },
 			{"fake ror/hopoo games/fx/solid parallax", "shaders/fx/hgsolidparallax" }
 		};
+		public static List<MaterialBase> MaterialBases = new List<MaterialBase>();
+		public static List<Material> Materials = new List<Material>();
+		public static Shader IntersectionShader = LegacyResourcesAPI.Load<Shader>("shaders/fx/hgintersectioncloudremap");
+
+		public static void Start()
+		{
+			ShaderConversion(MainAssets);
+
+			//This section automatically scans the project for all temp materials.
+			var MatTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(MaterialBase)));
+
+			foreach (var matBase in MatTypes)
+			{
+				MaterialBase mat = (MaterialBase)System.Activator.CreateInstance(matBase);
+				mat.Init();
+				MaterialBases.Add(mat);
+				Materials.Add(mat.Material);
+			}
+		}
 
 		public static void Init()
 		{
@@ -38,7 +59,6 @@ namespace StormyItems
 			{
 				MainAssets = AssetBundle.LoadFromStream(stream);
 			}
-			ShaderConversion(MainAssets);
 		}
 
 		public static void ShaderConversion(AssetBundle assets)
