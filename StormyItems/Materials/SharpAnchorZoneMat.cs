@@ -11,7 +11,7 @@ namespace StormyItems.Materials
     class SharpAnchorZoneMat : MaterialBase
     {
 		public static GameObject Zone;
-		public static Texture t;
+		public static Texture keepLoaded;
 
         public override void Init()
         {
@@ -21,9 +21,10 @@ namespace StormyItems.Materials
 			var cRend = copy.transform.Find("Indicator").Find("IndicatorSphere").GetComponent<MeshRenderer>();
 
 			var auraTex = Assets.MainAssets.LoadAsset<Texture2D>("Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZoneV2.png");
-			//var auraTex = Assets.MainAssets.LoadAsset<Texture>("Assets/Import/SharpAnchor/sharp_anchor_zone/texRampHealing.png");
+			keepLoaded = Addressables.LoadAssetAsync<Texture>("RoR2/Base/Common/texCloudCrackedIce.png").WaitForCompletion();
+			//"RoR2/Base/Common/texCloudStroke1.png"
 			//Texture2D cTex = (Texture2D) cRend.material.GetTexture("_RemapTex");
-			
+
 			/**
 			Log.LogMessage("Checking image properties...");
 			Log.LogMessage(cTex.name);
@@ -67,9 +68,10 @@ namespace StormyItems.Materials
 			//shader = cRend.material.shader;
 			//Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/WarCryOnMultiKill/WarCryEffect.prefab").WaitForCompletion();
 			Material material = new Material(shader);
-			//material.CopyPropertiesFromMaterial(cRend.material);
+			material.CopyPropertiesFromMaterial(cRend.material);
 			material.SetTexture("_RemapTex", auraTex);//Assets.MainAssets.LoadAsset<Texture>("Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZone.png"));
-			material.SetTexture("_Cloud2Tex", cRend.material.GetTexture("_Cloud2Tex"));
+			material.SetTexture("_Cloud2Tex", keepLoaded);
+			//material.SetTextureScale("_Cloud2Tex", new Vector2(3, 3));
 
 			material.SetVector("_CutoffScroll", new Vector4(0, 0, 3, 2));
 			material.SetFloat("_InvFade", 3.3f);

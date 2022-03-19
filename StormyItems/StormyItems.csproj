@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="libs\**" />
-    <EmbeddedResource Remove="libs\**" />
-    <None Remove="libs\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="stormyassets" />
   </ItemGroup>
 
@@ -77,6 +71,9 @@
       <HintPath>libs\SimpleJSON.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>libs\Unity.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="Wwise">
       <HintPath>libs\Wwise.dll</HintPath>
     </Reference>
@@ -88,11 +85,6 @@
 
   <ItemGroup>
     <Folder Include="Utils\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="libs\MMHOOK_RoR2.dll" />
-    <None Include="libs\R2API.dll" />
   </ItemGroup>
 
 </Project>

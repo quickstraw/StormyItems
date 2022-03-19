@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using System;
+using UnityEngine.AddressableAssets;
 
 namespace StormyItems
 {
@@ -57,6 +58,7 @@ namespace StormyItems
                     item.StartInit(Config);
                 }
             }
+
         }
 
         //The Awake() method is run at the very start when the game is initialized.
@@ -67,8 +69,26 @@ namespace StormyItems
             PInfo = Info;
             Items = new List<ItemBase>();
 
+            List<string> dump = new List<string>();
+            LegacyResourcesAPI.GetAllPaths(dump);
+            List<KeyValuePair<string, string>> dump2 = new List<KeyValuePair<string, string>>();
+            LegacyResourcesAPI.GetAllPathGuidPairs(dump2);
+            foreach (string s in dump)
+            {
+                //Log.LogMessage(s);
+            }
+            foreach (KeyValuePair<string, string> s in dump2)
+            {
+                //Log.LogMessage(s.Key + " | " + s.Value);
+            }
+            foreach (KeyValuePair<string, string> s in LegacyResourcesAPI.oldResourcesPathToGuid)
+            {
+                Log.LogMessage(s.Key + " | " + s.Value);
+            }
+
             CharacterBody.onBodyStartGlobal += CollectBodies;
             CharacterBody.onBodyDestroyGlobal += DestroyBodies;
+            
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
