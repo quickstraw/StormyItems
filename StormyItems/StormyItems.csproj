@@ -25,14 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Facepunch.Steamworks">
-      <HintPath>libs\Facepunch.Steamworks.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>libs\KdTreeLib.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="KinematicCharacterController">
       <HintPath>libs\KinematicCharacterController.dll</HintPath>
     </Reference>
@@ -43,28 +35,8 @@
       <HintPath>libs\Mono.Security.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>libs\pb_Stl.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>libs\Poly2Tri.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="ProBuilderCore">
-      <HintPath>libs\ProBuilderCore.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps">
-      <HintPath>libs\ProBuilderMeshOps.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="R2API">
       <HintPath>libs\R2API.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Rewired_Windows_Lib">
-      <HintPath>libs\Rewired_Windows_Lib.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="SimpleJSON">
@@ -73,13 +45,6 @@
     </Reference>
     <Reference Include="Unity.ResourceManager">
       <HintPath>libs\Unity.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Wwise">
-      <HintPath>libs\Wwise.dll</HintPath>
-    </Reference>
-    <Reference Include="Zio">
-      <HintPath>libs\Zio.dll</HintPath>
-      <Private>false</Private>
     </Reference>
   </ItemGroup>
 

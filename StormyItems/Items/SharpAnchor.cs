@@ -67,6 +67,7 @@ namespace StormyItems.Items
             {
                 self.MarkAllStatsDirty();
             }
+            orig(self, lostBuffDef);
         }
 
         private void OnGetStatCoefficients(RoR2.CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
