@@ -26,6 +26,8 @@ namespace StormyItems.Items
 
         public override ItemTier Tier => ItemTier.Tier1;
 
+        public override ItemTag[] ItemTags { get; set; } = new ItemTag[] { ItemTag.Utility };
+
         public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo.prefab");
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/cracked_halo_icon/CrackedHaloIcon.png");
