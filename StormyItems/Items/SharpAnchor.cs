@@ -17,9 +17,9 @@ namespace StormyItems.Items
 
         public override string ItemLangTokenName => "SHARP_ANCHOR";
 
-        public override string ItemPickupDesc => "Deal bonus damage when standing still.";
+        public override string ItemPickupDesc => "Increases damage of all nearby allies after standing still for 1 second.";
 
-        public override string ItemFullDescription => "Increase damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> while standing still.";
+        public override string ItemFullDescription => "After standing still for <style=cIsDamage>1</style> second, create a zone that increases damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> for all allies within <style=cIsDamage>2m</style> <style=cStack>(+1.0m per stack)</style>.";
 
         public override string ItemLore => "\"Cut the anchor loose! We'll never make it out in time!\"";
 
