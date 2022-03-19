@@ -19,7 +19,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Deal bonus damage when standing still.";
 
-        public override string ItemFullDescription => "Increase damage by <style=cIsDamage>20%</style> <style=cIsStack>(+20% per stack)</style> while standing still.";
+        public override string ItemFullDescription => "Increase damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> while standing still.";
 
         public override string ItemLore => "\"Cut the anchor loose! We'll never make it out in time!\"";
 
@@ -111,7 +111,7 @@ namespace StormyItems.Items
                             {
                                 if (anchorCount > 0 && currChar.GetNotMoving())
                                 {
-                                    ZoneObject = UnityEngine.Object.Instantiate<GameObject>(SharpAnchorZoneMat.Zone, currChar.footPosition, Quaternion.identity);
+                                    ZoneObject = UnityEngine.Object.Instantiate<GameObject>(SharpAnchorAssetHelper.Zone, currChar.footPosition, Quaternion.identity);
                                     ZoneObject.AddComponent<RoR2.TeamFilter>().teamIndex = currChar.teamComponent.teamIndex;
                                     var anchorZone = ZoneObject.AddComponent<SharpAnchorZone>();
                                     float networkradius = currChar.radius + 1.0f + 1.0f * anchorCount;

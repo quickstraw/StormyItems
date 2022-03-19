@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 
 namespace StormyItems.Materials
 {
-    class SharpAnchorZoneMat : MaterialBase
+    class SharpAnchorAssetHelper : AssetHelperBase
     {
 		public static GameObject Zone;
 		public static Texture keepLoaded;
@@ -24,46 +24,6 @@ namespace StormyItems.Materials
 			keepLoaded = Addressables.LoadAssetAsync<Texture>("RoR2/Base/Common/texCloudCrackedIce.png").WaitForCompletion();
 			//"RoR2/Base/Common/texCloudStroke1.png"
 			//Texture2D cTex = (Texture2D) cRend.material.GetTexture("_RemapTex");
-
-			/**
-			Log.LogMessage("Checking image properties...");
-			Log.LogMessage(cTex.name);
-			Log.LogMessage(cTex.wrapMode);
-			Log.LogMessage(cTex.filterMode);
-			Log.LogMessage(cTex.dimension);
-			Log.LogMessage(cTex.activeTextureColorSpace);
-			Log.LogMessage(cTex.anisoLevel);
-			Log.LogMessage(cTex.graphicsFormat);
-			Log.LogMessage(cTex.hideFlags);
-			Log.LogMessage(cTex.mipMapBias);
-			Log.LogMessage(cTex.mipmapCount);
-			Log.LogMessage(cTex.texelSize);
-			Log.LogMessage(cTex.minimumMipmapLevel);
-			Log.LogMessage(cTex.calculatedMipmapLevel);
-			Log.LogMessage(cTex.desiredMipmapLevel);
-			Log.LogMessage(cTex.format);
-			Log.LogMessage(cTex.requestedMipmapLevel);
-
-			Log.LogMessage(auraTex.name);
-			Log.LogMessage(auraTex.wrapMode);
-			Log.LogMessage(auraTex.filterMode);
-			Log.LogMessage(auraTex.dimension);
-			Log.LogMessage(auraTex.activeTextureColorSpace);
-			Log.LogMessage(auraTex.anisoLevel);
-			Log.LogMessage(auraTex.graphicsFormat);
-			Log.LogMessage(auraTex.hideFlags);
-			Log.LogMessage(auraTex.mipMapBias);
-			Log.LogMessage(auraTex.mipmapCount);
-			Log.LogMessage(auraTex.texelSize);
-			Log.LogMessage(auraTex.minimumMipmapLevel);
-			Log.LogMessage(auraTex.calculatedMipmapLevel);
-			Log.LogMessage(auraTex.desiredMipmapLevel);
-			Log.LogMessage(auraTex.format);
-			Log.LogMessage(auraTex.requestedMipmapLevel);
-			**/
-
-			//string message = (auraTex == null) + " | " + (cTex == null);
-			//Log.LogMessage(message);
 
 			//shader = cRend.material.shader;
 			//Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/WarCryOnMultiKill/WarCryEffect.prefab").WaitForCompletion();

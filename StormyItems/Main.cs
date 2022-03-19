@@ -69,23 +69,6 @@ namespace StormyItems
             PInfo = Info;
             Items = new List<ItemBase>();
 
-            List<string> dump = new List<string>();
-            LegacyResourcesAPI.GetAllPaths(dump);
-            List<KeyValuePair<string, string>> dump2 = new List<KeyValuePair<string, string>>();
-            LegacyResourcesAPI.GetAllPathGuidPairs(dump2);
-            foreach (string s in dump)
-            {
-                //Log.LogMessage(s);
-            }
-            foreach (KeyValuePair<string, string> s in dump2)
-            {
-                //Log.LogMessage(s.Key + " | " + s.Value);
-            }
-            foreach (KeyValuePair<string, string> s in LegacyResourcesAPI.oldResourcesPathToGuid)
-            {
-                Log.LogMessage(s.Key + " | " + s.Value);
-            }
-
             CharacterBody.onBodyStartGlobal += CollectBodies;
             CharacterBody.onBodyDestroyGlobal += DestroyBodies;
             

@@ -1,9 +1,9 @@
-# My first mod
+# Stormy Items
 
 Adds items that try to enhance alternative ways to play the game.
 
 ## Changelog
 
-**0.0.1**
+**0.9.0**
 
 * First release of Stormy Items.
