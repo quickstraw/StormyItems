@@ -52,6 +52,11 @@ namespace StormyItems.Items
             RecalculateStatsAPI.GetStatCoefficients += OnGetStatCoefficients;
         }
 
+        /// <summary>
+        /// If an item holder is not on the ground, give it a speed boost.
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="args"></param>
         private void OnGetStatCoefficients(CharacterBody body, RecalculateStatsAPI.StatHookEventArgs args)
         {
             if(body != null && args != null && body.inventory != null)
@@ -64,6 +69,10 @@ namespace StormyItems.Items
             }
         }
 
+        /// <summary>
+        /// Give ItemDisplays to characters. Currently doesn't work for some reason.
+        /// </summary>
+        /// <returns></returns>
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
             ItemBodyModelPrefab = ItemModel;//Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/cracked_halo/crackedhalo_display.prefab");
@@ -198,23 +207,6 @@ namespace StormyItems.Items
             });
 
             return rules;
-        }
-
-        public override void OnUpdate()
-        {
-            /**
-            //This if statement checks if the player has currently pressed F2.
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-                //Get the player body to use a position:	
-                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-
-                //And then drop our defined item in front of the player.
-
-                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ItemDef.itemIndex), transform.position, transform.forward * 20f);
-            }
-    **/
         }
 
         public override void OnFixedUpdate()
