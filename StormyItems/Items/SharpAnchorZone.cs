@@ -50,11 +50,6 @@ namespace StormyItems.Items
 			{
 				if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
 				{
-					HealthComponent component = teamMembers[i].GetComponent<HealthComponent>();
-					if (component)
-					{
-						component.AddBarrier(1f);
-					}
 					CharacterBody charComponent = teamMembers[i].GetComponent<CharacterBody>();
 					if (charComponent && SharpAnchor.buffDef)
 					{
