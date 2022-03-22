@@ -92,6 +92,10 @@ namespace StormyItems.Items
         {
             if(index < Zones.Count)
             {
+                if(NetworkServer.active && Zones[index])
+                {
+                    UnityEngine.Object.Destroy(Zones[index]);
+                }
                 Zones.RemoveAt(index);
             }
             if(index < flags.Count)
