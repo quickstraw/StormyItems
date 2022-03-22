@@ -224,12 +224,12 @@ namespace StormyItems.Items
             {
                 CharacterBody currChar = Main.CharBodies[i];
 
-                if(currChar.inventory == null)
+                if(!currChar || !currChar.inventory || !currChar.characterMotor)
                 {
                     continue;
                 }
 
-                int haloCount = currChar.inventory.GetItemCount(ItemDef.itemIndex);
+                int haloCount = GetCount(currChar);
 
                 if (haloCount > 0 && !currChar.characterMotor.isGrounded)
                 {

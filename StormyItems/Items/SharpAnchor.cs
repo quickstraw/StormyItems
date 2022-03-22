@@ -45,6 +45,7 @@ namespace StormyItems.Items
 
         public override void StartInit(ConfigFile config)
         {
+            ZonePrefab.RegisterNetworkPrefab();
             CreateLang();
             CreateItem();
 
