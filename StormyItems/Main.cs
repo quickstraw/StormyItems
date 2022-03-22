@@ -103,7 +103,7 @@ namespace StormyItems
             }
             catch (NullReferenceException e)
             {
-                Log.LogError(e.StackTrace);
+                //Log.LogError(e.StackTrace);
             }
         }
 

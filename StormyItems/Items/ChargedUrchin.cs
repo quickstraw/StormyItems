@@ -16,7 +16,7 @@ namespace StormyItems.Items
 
         public override string ItemLangTokenName => "CHARGED_URCHIN";
 
-        public override string ItemPickupDesc => "While you have a shield, shock enemies on taking damage";
+        public override string ItemPickupDesc => "While you have a shield, shock enemies on taking damage.";
 
         public override string ItemFullDescription => "Gain a <style=cIsHealth>shield</style> equal to <style=cIsHealth>10%</style> of your maximum health. While you have a shield, taking damage <style=cIsDamage>shocks</style> enemies for <style=cIsDamage>80%</style> <style=cStack>(+80% per stack)</style> damage.";
                                                       //"Gain a <style=cIsHealth>shield</style> equal to <style=cIsHealth>4%</style> of your maximum health. While you have a shield, taking damage fires <style=cIsDamage>lightning</style> for <style=cIsDamage>80%</style> <style=cStack>(+80% per stack)</style> damage taken on a target within <style=cIsDamage>20m</style> <style=cStack>(+2m per stack)</style>.";

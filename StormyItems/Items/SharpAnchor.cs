@@ -90,8 +90,14 @@ namespace StormyItems.Items
 
         public override void OnBodyRemoved(RoR2.CharacterBody body, int index)
         {
-            Zones.RemoveAt(index);
-            flags.RemoveAt(index);
+            if(index < Zones.Count)
+            {
+                Zones.RemoveAt(index);
+            }
+            if(index < flags.Count)
+            {
+                flags.RemoveAt(index);
+            }
         }
 
         public override void OnFixedUpdate()
