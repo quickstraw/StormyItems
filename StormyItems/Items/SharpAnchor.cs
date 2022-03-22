@@ -19,7 +19,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Increases damage of all nearby allies after standing still for 1 second.";
 
-        public override string ItemFullDescription => "After standing still for <style=cIsDamage>1</style> second, create a zone that increases damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> for all allies within <style=cIsDamage>2m</style> <style=cStack>(+1.0m per stack)</style>.";
+        public override string ItemFullDescription => "After standing still for <style=cIsDamage>1</style> second, create a zone that increases damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> for all allies within <style=cIsDamage>2.1m</style> <style=cStack>(+1.0m per stack)</style>.";
 
         public override string ItemLore => "\"Cut the anchor loose! We'll never make it out in time!\"";
 
@@ -45,7 +45,7 @@ namespace StormyItems.Items
 
         public override void StartInit(ConfigFile config)
         {
-            ZonePrefab.RegisterNetworkPrefab();
+            
             CreateLang();
             CreateItem();
 
@@ -121,10 +121,14 @@ namespace StormyItems.Items
                             {
                                 if (anchorCount > 0 && currChar.GetNotMoving())
                                 {
-                                    ZoneObject = UnityEngine.Object.Instantiate<GameObject>(SharpAnchorAssetHelper.Zone, currChar.footPosition, Quaternion.identity);
-                                    ZoneObject.AddComponent<RoR2.TeamFilter>().teamIndex = currChar.teamComponent.teamIndex;
-                                    var anchorZone = ZoneObject.AddComponent<SharpAnchorZone>();
-                                    float networkradius = currChar.radius + 1.0f + 1.0f * anchorCount;
+                                    ZoneObject = UnityEngine.Object.Instantiate(SharpAnchorAssetHelper.Zone, currChar.footPosition, Quaternion.identity);
+                                    //ZoneObject.AddComponent<RoR2.TeamFilter>().teamIndex = currChar.teamComponent.teamIndex;
+                                    //var anchorZone = ZoneObject.AddComponent<SharpAnchorZone>();
+                                    var teamFilter = ZoneObject.GetComponent<RoR2.TeamFilter>();
+                                    teamFilter.teamIndex = currChar.teamComponent.teamIndex;
+                                    var anchorZone = ZoneObject.GetComponent<SharpAnchorZone>();
+                                    float networkradius = currChar.radius + 1.1f + 1.0f * anchorCount;
+                                    anchorZone.teamFilter = teamFilter;
                                     anchorZone.Networkradius = networkradius;
                                     NetworkServer.Spawn(ZoneObject);
                                     Zones[i] = ZoneObject;

@@ -12,7 +12,7 @@ namespace StormyItems.Items
     [RequireComponent(typeof(TeamFilter))]
     class SharpAnchorZone : NetworkBehaviour
     {
-		private void Awake()
+		private void Start()
 		{
 			teamFilter = GetComponent<TeamFilter>();
 			rangeIndicator = transform.GetChild(0);
@@ -158,7 +158,7 @@ namespace StormyItems.Items
 		[Tooltip("Should the ward be floored on start")]
 		public bool floorWard;
 
-		private TeamFilter teamFilter;
+		public TeamFilter teamFilter;
 
 		private float rangeIndicatorScaleVelocity;
 	}

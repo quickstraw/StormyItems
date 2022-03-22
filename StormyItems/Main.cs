@@ -116,7 +116,14 @@ namespace StormyItems
         public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
         {
             var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
-            var aiBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?").Value;
+            
+            bool defValue = false;
+            // Blacklist default:
+            if (item.ItemLangTokenName == "CHARGED_URCHIN") {
+                defValue = true;
+            }
+            var aiBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from AI Use?", defValue, "Should the AI not be able to obtain this item?").Value;
+
             if (enabled)
             {
                 itemList.Add(item);

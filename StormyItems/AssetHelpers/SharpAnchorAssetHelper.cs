@@ -1,10 +1,12 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using StormyItems.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace StormyItems.Materials
 {
@@ -50,6 +52,10 @@ namespace StormyItems.Materials
 			var anchorZone = Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab");
 
 			anchorZone.transform.GetChild(0).transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
+			anchorZone.AddComponent<NetworkIdentity>();
+			anchorZone.AddComponent<TeamFilter>();
+			anchorZone.AddComponent<SharpAnchorZone>();
+			anchorZone.RegisterNetworkPrefab();
 			Zone = anchorZone;
 		}
     }

@@ -5,7 +5,7 @@ using R2API.Utils;
 using RoR2;
 using UnityEngine;
 using StormyItems.Utils;
-
+using UnityEngine.Networking;
 
 namespace StormyItems.Items
 {
@@ -211,7 +211,10 @@ namespace StormyItems.Items
 
         public override void OnFixedUpdate()
         {
-            ProvideBuff();
+            if (NetworkServer.active)
+            {
+                ProvideBuff();
+            }
         }
 
         private void ProvideBuff()
