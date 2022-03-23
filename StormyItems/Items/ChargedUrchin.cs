@@ -72,24 +72,30 @@ namespace StormyItems.Items
         /// <param name="damageInfo"></param>
         private void OnTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, RoR2.HealthComponent self, RoR2.DamageInfo damageInfo)
         {
-            int count = GetCount(self.body);
-            if(count > 0 && self.shield > 0)
+            try
             {
-                //float sDamage = damageInfo.damage * count *  0.8f;
-                float sDamage = self.body.damage * count * 0.8f;
-                if (damageInfo.attacker.GetComponent<HealthComponent>())
+                int count = GetCount(self.body);
+                if (count > 0 && self && self.shield > 0)
                 {
-                    // Create a shock attack DamageInfo -- Want to replace this with a chain lightning effect.
-                    var ShockAttack = new DamageInfo()
+                    //float sDamage = damageInfo.damage * count *  0.8f;
+                    float sDamage = self.body.damage * count * 0.8f;
+                    if (damageInfo.attacker && damageInfo.attacker.GetComponent<HealthComponent>())
                     {
-                        attacker = self.body.gameObject,
-                        crit = self.body.RollCrit(),
-                        damage = sDamage,
-                        damageType = DamageType.Shock5s,
-                        procCoefficient = 1
-                    };
-                    damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(ShockAttack);
+                        // Create a shock attack DamageInfo -- Want to replace this with a chain lightning effect.
+                        var ShockAttack = new DamageInfo()
+                        {
+                            attacker = self.body.gameObject,
+                            crit = self.body.RollCrit(),
+                            damage = sDamage,
+                            damageType = DamageType.Shock5s,
+                            procCoefficient = 1
+                        };
+                        damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(ShockAttack);
+                    }
                 }
+            } catch(NullReferenceException e)
+            {
+
             }
             orig(self, damageInfo);
         }
