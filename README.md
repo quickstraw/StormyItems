@@ -24,6 +24,8 @@
 
 ## Changelog
 
+- 0.9.2 - Fixed Charged Urchin crashing when user is attacked by the user's own ability. (Fixed crash when using Bomber mod.)
+
 - 0.9.1 - Fixed Charged Urchin spamming effects when being attacked by certain elites and bosses.
 
 - 0.9.0 - First public release.
