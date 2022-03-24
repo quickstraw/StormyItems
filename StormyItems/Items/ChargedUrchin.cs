@@ -81,16 +81,19 @@ namespace StormyItems.Items
                     float sDamage = self.body.damage * count * 0.8f;
                     if (damageInfo.attacker && damageInfo.attacker.GetComponent<HealthComponent>())
                     {
-                        // Create a shock attack DamageInfo -- Want to replace this with a chain lightning effect.
-                        var ShockAttack = new DamageInfo()
+                        if(damageInfo.attacker.GetComponent<HealthComponent>().body != self.body) // If you didn't damage yourself.
                         {
-                            attacker = self.body.gameObject,
-                            crit = self.body.RollCrit(),
-                            damage = sDamage,
-                            damageType = DamageType.Shock5s,
-                            procCoefficient = 1
-                        };
-                        damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(ShockAttack);
+                            // Create a shock attack DamageInfo -- Want to replace this with a chain lightning effect.
+                            var ShockAttack = new DamageInfo()
+                            {
+                                attacker = self.body.gameObject,
+                                crit = self.body.RollCrit(),
+                                damage = sDamage,
+                                damageType = DamageType.Shock5s,
+                                procCoefficient = 1
+                            };
+                            damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(ShockAttack);
+                        }
                     }
                 }
             } catch(NullReferenceException e)
