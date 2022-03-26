@@ -20,7 +20,7 @@
 
 - Making icons for buffs.
 
-- Figuring out why Item Displays don't work.
+- Making item displays.
 
 ## Changelog
 
