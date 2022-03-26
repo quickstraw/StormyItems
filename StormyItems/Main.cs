@@ -49,7 +49,6 @@ namespace StormyItems
 
             //This section automatically scans the project for all items
             var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
-
             foreach (var itemType in ItemTypes)
             {
                 ItemBase item = (ItemBase)System.Activator.CreateInstance(itemType);
@@ -58,7 +57,6 @@ namespace StormyItems
                     item.StartInit(Config);
                 }
             }
-
         }
 
         //The Awake() method is run at the very start when the game is initialized.
@@ -71,7 +69,6 @@ namespace StormyItems
 
             CharacterBody.onBodyStartGlobal += CollectBodies;
             CharacterBody.onBodyDestroyGlobal += DestroyBodies;
-            
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
