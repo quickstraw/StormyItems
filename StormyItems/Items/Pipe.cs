@@ -35,6 +35,13 @@ namespace StormyItems.Items
         {
             CreateLang();
             CreateItem();
+
+            Hooks();
+        }
+
+        private void Hooks()
+        {
+
         }
     }
 }
