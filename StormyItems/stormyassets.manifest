@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2095598787
+CRC: 3627468071
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8d210eb196a438c2844525b31a5ede18
+    Hash: 8cb788c26c91ba86131ccade35a69d11
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3f3b2b29dd295705ecd8fdf225ffa69e
@@ -31,11 +31,13 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Import/Pipe/Pipe.prefab
 - Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZoneV2.png
 - Assets/Import/ChargedUrchin/ChargedUrchinIcon.png
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png
+- Assets/Import/Pipe/PipeIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab
 - Assets/Import/SharpAnchor/sharp_anchor/SharpAnchor.prefab
 - Assets/Import/cracked_halo/materials/cracked_halo_mat.mat
