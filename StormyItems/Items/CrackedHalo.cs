@@ -104,9 +104,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlToolbot", new RoR2.ItemDisplayRule[]
@@ -116,9 +116,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlEngi", new RoR2.ItemDisplayRule[]
@@ -127,10 +127,10 @@ namespace StormyItems.Items
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
-                    childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    childName = "HeadCenter",
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlMerc", new RoR2.ItemDisplayRule[]
@@ -140,9 +140,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlTreebot", new RoR2.ItemDisplayRule[]
@@ -151,10 +151,10 @@ namespace StormyItems.Items
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
-                    childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    childName = "FlowerBase",
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlLoader", new RoR2.ItemDisplayRule[]
@@ -164,9 +164,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlCroco", new RoR2.ItemDisplayRule[]
@@ -176,9 +176,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlCaptain", new RoR2.ItemDisplayRule[]
@@ -188,9 +188,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
             rules.Add("mdlBandit2", new RoR2.ItemDisplayRule[]
@@ -200,9 +200,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(0,0,0),
-                    localAngles = new Vector3(0,0,0),
-                    localScale = new Vector3(0.3f,0.3f,0.3f)
+                    localPos = new Vector3(0,0,0.5f),
+                    localAngles = new Vector3(0,0,15f),
+                    localScale = new Vector3(0.1f,0.1f,0.1f)
                 }
             });
 
