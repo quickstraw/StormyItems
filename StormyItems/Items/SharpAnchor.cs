@@ -19,7 +19,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Increases damage of all nearby allies after standing still for 1 second.";
 
-        public override string ItemFullDescription => "After standing still for <style=cIsDamage>1</style> second, create a zone that increases damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> for all allies within <style=cIsDamage>2.1m</style> <style=cStack>(+1.0m per stack)</style>.";
+        public override string ItemFullDescription => "After standing still for <style=cIsDamage>1</style> second, create a zone that increases damage by <style=cIsDamage>20%</style> <style=cStack>(+20% per stack)</style> for all allies within <style=cIsDamage>2.3m</style> <style=cStack>(+1.0m per stack)</style>.";
 
         public override string ItemLore => "\"Cut the anchor loose! We'll never make it out in time!\"";
 
@@ -131,7 +131,7 @@ namespace StormyItems.Items
                                     var teamFilter = ZoneObject.GetComponent<RoR2.TeamFilter>();
                                     teamFilter.teamIndex = currChar.teamComponent.teamIndex;
                                     var anchorZone = ZoneObject.GetComponent<SharpAnchorZone>();
-                                    float networkradius = currChar.radius + 1.1f + 1.0f * anchorCount;
+                                    float networkradius = currChar.radius + 1.3f + 1.0f * anchorCount;
                                     anchorZone.teamFilter = teamFilter;
                                     anchorZone.Networkradius = networkradius;
                                     NetworkServer.Spawn(ZoneObject);
