@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace StormyItems.Items
 {
-    public class Pipe : ItemBase
+    /**public class Pipe : ItemBase
     {
         public override string ItemName => "Antique Pipe";
 
@@ -43,5 +43,5 @@ namespace StormyItems.Items
         {
 
         }
-    }
+    }**/
 }
