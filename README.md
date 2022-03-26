@@ -24,6 +24,8 @@
 
 ## Changelog
 
+- 0.9.3 - Added Cracked Halo item displays. They won't work until R2API is updated. Also changed Sharp Anchor's buff zone slightly so it doesn't overlap with Bustling Fungus as much.
+
 - 0.9.2 - Fixed Charged Urchin crashing when user is attacked by the user's own ability. (Fixed crash when using Bomber mod.)
 
 - 0.9.1 - Fixed Charged Urchin spamming effects when being attacked by certain elites and bosses.
