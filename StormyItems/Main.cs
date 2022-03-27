@@ -49,9 +49,14 @@ namespace StormyItems
 
             //This section automatically scans the project for all items
             var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
+            var tempItems = new List<ItemBase>();
             foreach (var itemType in ItemTypes)
             {
                 ItemBase item = (ItemBase)System.Activator.CreateInstance(itemType);
+                tempItems.Add(item);
+            }
+            foreach(var item in tempItems)
+            {
                 if (ValidateItem(item, Items))
                 {
                     item.StartInit(Config);
@@ -112,6 +117,10 @@ namespace StormyItems
         /// <param name="itemList">The list you would like to add this to if it passes the config check.</param>
         public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
         {
+            if (item.Tier != ItemTier.NoTier)
+            {
+                return true;
+            }
             var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
             
             bool defValue = false;
@@ -119,6 +128,7 @@ namespace StormyItems
             if (item.ItemLangTokenName == "CHARGED_URCHIN") {
                 defValue = true;
             }
+
             var aiBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from AI Use?", defValue, "Should the AI not be able to obtain this item?").Value;
 
             if (enabled)
