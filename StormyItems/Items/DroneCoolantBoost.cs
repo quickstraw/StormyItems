@@ -36,14 +36,57 @@ namespace StormyItems.Items
             CreateLang();
             CreateItem();
 
+            Hooks();
+        }
+
+        private void Hooks()
+        {
+            GlobalEventManager.onServerDamageDealt += OnServerDamageDealt;
             RecalculateStatsAPI.GetStatCoefficients += OnRecalculateStats;
+        }
+
+        private void OnServerDamageDealt(DamageReport damageReport)
+        {
+            CharacterBody inflictor = damageReport.attackerBody;
+            CharacterBody victim = damageReport.victimBody;
+
+            if(inflictor && victim)
+            {
+                int count = GetCount(inflictor);
+                if(count > 0 && inflictor.master)
+                {
+                    var odds = 20.0f;
+                    var isProcced = Util.CheckRoll(odds, inflictor.master);
+                    if (isProcced)
+                    {
+                        var damageInfo = damageReport.damageInfo;
+
+                        float damageMult = 0.5f * count;
+                        InflictDotInfo inflictDotInfo = default(InflictDotInfo);
+                        inflictDotInfo.attackerObject = damageInfo.attacker;
+                        inflictDotInfo.victimObject = victim.gameObject;
+                        inflictDotInfo.totalDamage = damageInfo.damage * damageMult;
+                        inflictDotInfo.damageMultiplier = 1f;
+                        inflictDotInfo.dotIndex = DotController.DotIndex.Burn;
+                        //inflictDotInfo.maxStacksFromAttacker = maxStacksFromAttacker;
+                        InflictDotInfo dotInfo = inflictDotInfo;
+                        StrengthenBurnUtils.CheckDotForUpgrade(inflictor.inventory, ref dotInfo);
+                        DotController.InflictDot(ref dotInfo);
+                    }
+                }
+            }
         }
 
         private void OnRecalculateStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
             int count = GetCount(sender);
-            args.attackSpeedMultAdd += .1f * count;
-            args.damageMultAdd += 0.14f * count;
+            if(count > 0)
+            {
+                args.attackSpeedMultAdd += 0.1f * count;
+                //args.critAdd += 10.0f * count;
+            }
         }
+
+        
     }
 }
