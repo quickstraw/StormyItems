@@ -14,6 +14,10 @@
   
   ![](https://github.com/quickstraw/StormyItems/blob/master/StormyItems/Items/Icons/ChargedUrchinIcon.png?raw=true)
 
+- Illegal Drone Coolant: Your drones are overclocked to gain attack speed and a chance to burn enemies.
+  
+  ![](https://github.com/quickstraw/StormyItems/blob/master/StormyItems/Items/Icons/DroneCoolantIcon.png?raw=true)
+
 ## Currently Working On:
 
 - Everything is functional in multiplayer, but I want to do more testing to make sure everything is solid.
@@ -24,7 +28,7 @@
 
 ## Changelog
 
-- 0.9.3 - Added Cracked Halo item displays. They won't work until R2API is updated. Also changed Sharp Anchor's buff zone slightly so it doesn't overlap with Bustling Fungus as much.
+- 0.9.3 - Added Cracked Halo item displays for whenever item displays are fixed. Added Illegal Drone Coolant.
 
 - 0.9.2 - Fixed Charged Urchin crashing when user is attacked by the user's own ability. (Fixed crash when using Bomber mod.)
 
