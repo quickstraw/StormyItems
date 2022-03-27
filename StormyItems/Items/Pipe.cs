@@ -41,7 +41,12 @@ namespace StormyItems.Items
 
         private void Hooks()
         {
+            On.RoR2.GlobalEventManager.OnInteractionBegin += OnInteraction;
+        }
 
+        private void OnInteraction(On.RoR2.GlobalEventManager.orig_OnInteractionBegin orig, RoR2.GlobalEventManager self, RoR2.Interactor interactor, IInteractable interactable, GameObject interactableObject)
+        {
+            orig(self, interactor, interactable, interactableObject);
         }
     }**/
 }
