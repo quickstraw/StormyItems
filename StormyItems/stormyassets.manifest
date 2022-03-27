@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1567335473
+CRC: 1820774113
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 454c3dc4867ca051f5138a27e7bc4cc1
+    Hash: 9078e45dd90cf5d69afeb0099b27f673
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3f3b2b29dd295705ecd8fdf225ffa69e
@@ -35,6 +35,7 @@ Assets:
 - Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZoneV2.png
 - Assets/Import/ChargedUrchin/ChargedUrchinIcon.png
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
+- Assets/Import/DroneCoolant/DroneCoolantPickup.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png
 - Assets/Import/Pipe/PipeIcon.png
@@ -46,7 +47,7 @@ Assets:
 - Assets/Import/SharpAnchor/sharp_anchor_zone/texRampHealing.png
 - Assets/Import/SharpAnchor/sharp_anchor_zone/texRampAnchorZone.png
 - Assets/Import/cracked_halo/crackedhalo.prefab
-- Assets/Import/DroneCoolant/DroneCoolant.prefab
+- Assets/Import/DroneCoolant/DroneCoolantDisplay.prefab
 - Assets/Import/cracked_halo/textures/CrackedHalo_tex.png
 - Assets/Import/ChargedUrchin/ChargedUrchin.prefab
 Dependencies: []

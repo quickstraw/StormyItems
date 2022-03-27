@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using R2API;
 using RoR2;
+using StormyItems.Materials;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,15 +15,15 @@ namespace StormyItems.Items
 
         public override string ItemLangTokenName => "ILLEGAL_DRONE_COOLANT";
 
-        public override string ItemPickupDesc => "Upgrades drones.";
+        public override string ItemPickupDesc => "Your drones are overclocked to gain attack speed and movement speed.";
 
-        public override string ItemFullDescription => "Upgrades drones.";
+        public override string ItemFullDescription => "Your drones are overclocked to gain <style=cIsDamage>+10%</style> <style=cStack>(+10% per stack)</style> attack speed and <style=cIsUtility>+14%</style> <style=cStack>(+14% per stack)</style> movement speed.";
 
         public override string ItemLore => "An ultra-cold compound was found deep in space. Retrieving...";
 
         public override ItemTier Tier => ItemTier.Tier2;
 
-        public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/DroneCoolant/DroneCoolant.prefab");
+        public override GameObject ItemModel => DroneCoolantAssetHelper.PickupPrefab;
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/DroneCoolant/DroneCoolantIcon.png");
 
