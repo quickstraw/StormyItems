@@ -71,7 +71,7 @@ namespace StormyItems.Items
                         inflictDotInfo.dotIndex = DotController.DotIndex.Burn;
                         inflictDotInfo.maxStacksFromAttacker = uint.MaxValue;
                         InflictDotInfo dotInfo = inflictDotInfo;
-                        StrengthenBurnUtils.CheckDotForUpgrade(inflictor.inventory, ref dotInfo);
+                        //StrengthenBurnUtils.CheckDotForUpgrade(inflictor.inventory, ref dotInfo);
                         DotController.InflictDot(ref dotInfo);
                     }
                 }
