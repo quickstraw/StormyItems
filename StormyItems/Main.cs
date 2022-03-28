@@ -117,7 +117,7 @@ namespace StormyItems
         /// <param name="itemList">The list you would like to add this to if it passes the config check.</param>
         public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
         {
-            if (item.Tier != ItemTier.NoTier)
+            if (item.Tier == ItemTier.NoTier)
             {
                 return true;
             }
