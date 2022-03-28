@@ -61,11 +61,12 @@ namespace StormyItems.Items
                     {
                         var damageInfo = damageReport.damageInfo;
 
-                        float damageMult = 0.5f * count;
+                        float baseDamage = inflictor.baseDamage;
+                        float damageMult = 0.5f + 0.5f * count;
                         InflictDotInfo inflictDotInfo = default(InflictDotInfo);
                         inflictDotInfo.attackerObject = damageInfo.attacker;
                         inflictDotInfo.victimObject = victim.gameObject;
-                        inflictDotInfo.totalDamage = damageInfo.damage * damageMult;
+                        inflictDotInfo.totalDamage = baseDamage * damageMult;
                         inflictDotInfo.damageMultiplier = 1f;
                         inflictDotInfo.dotIndex = DotController.DotIndex.Burn;
                         inflictDotInfo.maxStacksFromAttacker = uint.MaxValue;

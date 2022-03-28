@@ -17,7 +17,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Your drones are overclocked to gain attack speed and a chance to burn enemies.";
 
-        public override string ItemFullDescription => "Your drones are overclocked to gain <style=cIsDamage>+10%</style> <style=cStack>(+10% per stack)</style> attack speed and a <style=cIsDamage>20%</style> chance to <style=cIsDamage>burn</style> enemies.";
+        public override string ItemFullDescription => "Your drones are overclocked to gain <style=cIsDamage>+10%</style> <style=cStack>(+10% per stack)</style> attack speed and a <style=cIsDamage>20%</style> chance to <style=cIsDamage>burn</style> enemies for <style=cIsDamage>100%</style>  <style=cStack>(+50% per stack)</style> base damage.";
 
         public override string ItemLore => "An ultra-cold compound was found deep in space. Retrieving...";
 
