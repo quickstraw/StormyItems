@@ -119,6 +119,7 @@ namespace StormyItems
         {
             if (item.Tier == ItemTier.NoTier)
             {
+                itemList.Add(item);
                 return true;
             }
             var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
