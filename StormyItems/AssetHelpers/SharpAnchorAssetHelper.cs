@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace StormyItems.Materials
+namespace StormyItems.AssetHelpers
 {
     class SharpAnchorAssetHelper : AssetHelperBase
     {

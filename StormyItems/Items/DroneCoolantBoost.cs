@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using R2API;
 using RoR2;
-using StormyItems.Materials;
+using StormyItems.AssetHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;

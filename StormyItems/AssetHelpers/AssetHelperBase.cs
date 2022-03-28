@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace StormyItems.Materials
+namespace StormyItems.AssetHelpers
 {
     public abstract class AssetHelperBase
     {

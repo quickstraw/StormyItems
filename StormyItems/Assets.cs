@@ -10,7 +10,7 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using System.Reflection;
 using System.Linq;
-using StormyItems.Materials;
+using StormyItems.AssetHelpers;
 using RoR2;
 
 namespace StormyItems
