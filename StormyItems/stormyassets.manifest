@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1820774113
+CRC: 379914380
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9078e45dd90cf5d69afeb0099b27f673
+    Hash: ddf067c42609317dae22fec1da35c79c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3f3b2b29dd295705ecd8fdf225ffa69e
+    Hash: 7c313ee756765bb0821454b00b286c3f
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,6 +27,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 54
   Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
@@ -36,6 +38,7 @@ Assets:
 - Assets/Import/ChargedUrchin/ChargedUrchinIcon.png
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
 - Assets/Import/DroneCoolant/DroneCoolantPickup.prefab
+- Assets/Import/DroneCoolant/DroneCoolantBoostDisplay.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png
 - Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png
 - Assets/Import/Pipe/PipeIcon.png
