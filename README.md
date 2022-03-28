@@ -20,7 +20,7 @@
 
 ## Currently Working On:
 
-- Everything is functional in multiplayer, but I want to do more testing to make sure everything is solid.
+- Testing on multiplayer and testing balance.
 
 - Making icons for buffs.
 
