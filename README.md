@@ -1,6 +1,6 @@
 # StormyItems
 
-<p>Adds a few items that build on vanilla ideas. I want to make items that make certain builds and playstyles more viable.</p>
+<p>Adds a few items that build on vanilla ideas. I want to make items that make certain builds and playstyles more viable. Please let me know if there are any bugs or crashes.</p>
 
 - Cracked Halo: Increases movement speed when in the air. 
   
