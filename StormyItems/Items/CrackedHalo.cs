@@ -140,9 +140,9 @@ namespace StormyItems.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "HeadCenter",
-                    localPos = new Vector3(0,0.375f,0.041f),
-                    localAngles = new Vector3(8.0f,0,10.0f),
-                    localScale = new Vector3(0.1f,0.1f,0.1f)
+                    localPos = new Vector3(0F, 0.375F, 0.041F),
+                    localAngles = new Vector3(7.96373F, 359.8193F, 14.61625F),
+                    localScale = new Vector3(0.1F, 0.1F, 0.1F)
                 }
             });
             rules.Add("mdlMage", new RoR2.ItemDisplayRule[]
@@ -154,7 +154,7 @@ namespace StormyItems.Items
                     childName = "Head",
                     localPos = new Vector3(0,0.3f,-0.055f),
                     localAngles = new Vector3(0,0,15f),
-                    localScale = new Vector3(0.1f,0.1f,0.1f)
+                    localScale = new Vector3(0.08f,0.08f,0.08f)
                 }
             });
             rules.Add("mdlMerc", new RoR2.ItemDisplayRule[]
