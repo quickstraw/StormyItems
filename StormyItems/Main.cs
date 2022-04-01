@@ -9,6 +9,7 @@ using System.Reflection;
 using UnityEngine;
 using System;
 using UnityEngine.AddressableAssets;
+using RoR2.ExpansionManagement;
 
 namespace StormyItems
 {
@@ -36,9 +37,10 @@ namespace StormyItems
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.9.1";
+        public const string PluginVersion = "1.0.0";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
+        public static List<bool> IsGrounded = new List<bool>();
 
         public static List<ItemBase> Items;
 
@@ -62,6 +64,16 @@ namespace StormyItems
                     item.StartInit(Config);
                 }
             }
+            List<ItemDef.Pair> newVoidPairs = new List<ItemDef.Pair>();
+            foreach(var item in tempItems)
+            {
+                if (item.RequiresSOTV)
+                {
+                    item.AddVoidPair(newVoidPairs);
+                }
+            }
+            var voidPairs = ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem];
+            ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] = voidPairs.Union(newVoidPairs).ToArray();
         }
 
         //The Awake() method is run at the very start when the game is initialized.
@@ -107,6 +119,7 @@ namespace StormyItems
             {
                 //Log.LogError(e.StackTrace);
             }
+            UpdateBodies();
         }
 
         /// <summary>
@@ -146,6 +159,12 @@ namespace StormyItems
         private void CollectBodies(CharacterBody body)
         {
             CharBodies.Add(body);
+            bool grounded = true;
+            if(body.characterMotor != null)
+            {
+                grounded = body.characterMotor.isGrounded;
+            }
+            IsGrounded.Add(grounded);
             foreach (ItemBase ib in Items)
             {
                 ib.OnBodyAdded(body);
@@ -160,6 +179,7 @@ namespace StormyItems
                 if (CharBodies[i] == body)
                 {
                     CharBodies.RemoveAt(i);
+                    IsGrounded.RemoveAt(i);
                     index = i;
                     break;
                 }
@@ -167,6 +187,23 @@ namespace StormyItems
             foreach (ItemBase ib in Items)
             {
                 ib.OnBodyRemoved(body, index);
+            }
+        }
+
+        private void UpdateBodies()
+        {
+            for(int i = 0; i < CharBodies.Count; i++)
+            {
+                var body = CharBodies[i];
+                if(body != null && body.characterMotor != null)
+                {
+                    bool grounded = body.characterMotor.isGrounded;
+                    if(grounded != IsGrounded[i])
+                    {
+                        IsGrounded[i] = grounded;
+                        body.MarkAllStatsDirty();
+                    }
+                }
             }
         }
 
