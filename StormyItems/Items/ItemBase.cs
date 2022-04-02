@@ -35,7 +35,10 @@ namespace StormyItems.Items
 
         public abstract void StartInit(ConfigFile config);
         public virtual void CreateConfig(ConfigFile config) { }
-        public virtual ItemBase VoidParent => null;
+        public virtual ItemBase VoidParent()
+        {
+            return null;
+        }
         public virtual void OnUpdate()
         {
 
@@ -102,18 +105,18 @@ namespace StormyItems.Items
 
         public void AddVoidPair(List<ItemDef.Pair> newVoidPairs)
         {
-            if(VoidParent == null)
+            var voidParent = VoidParent();
+            if(voidParent == null)
             {
                 return;
             }
-            //var voidPairs = ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Where(x => x.itemDef2 != VoidParent.ItemDef);
+            //var voidPairs = ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem].Where(x => x.itemDef1 != VoidParent.ItemDef); -- Use to overwrite other mods
             ItemDef.Pair newVoidPair = new ItemDef.Pair()
             {
-                itemDef1 = ItemDef,
-                itemDef2 = VoidParent.ItemDef
+                itemDef1 = voidParent.ItemDef,
+                itemDef2 = ItemDef
             };
             newVoidPairs.Add(newVoidPair);
-            //ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] = voidPairs.ToArray();
         }
 
         public virtual void OnBodyAdded(CharacterBody body)
