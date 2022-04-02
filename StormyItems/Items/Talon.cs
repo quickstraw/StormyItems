@@ -14,11 +14,10 @@ namespace StormyItems.Items
     public class Talon : ItemBase
 	{
         public static GameObject ItemBodyModelPrefab;
-        private static BuffDef buffDef;
 
-        public override string ItemName => "Talon";
+        public override string ItemName => "Abyssal Talon";
 
-        public override string ItemLangTokenName => "TALON";
+        public override string ItemLangTokenName => "ABYSSAL_TALON";
 
         public override string ItemPickupDesc => "Increases damage when in the air. <style=cIsVoid>Corrupts all Sharp Anchors</style>.";
 
