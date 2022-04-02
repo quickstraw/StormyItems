@@ -23,6 +23,8 @@ namespace StormyItems.Items
 
         public override ItemTier Tier => ItemTier.Tier2;
 
+        public override ItemTag[] ItemTags { get; set; } = new ItemTag[] { ItemTag.Damage };
+
         public override GameObject ItemModel => DroneCoolantAssetHelper.PickupPrefab;
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/DroneCoolant/DroneCoolantIcon.png");
