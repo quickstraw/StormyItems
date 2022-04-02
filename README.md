@@ -18,6 +18,10 @@
   
   ![](https://github.com/quickstraw/StormyItems/blob/master/StormyItems/Items/Icons/DroneCoolantIcon.png?raw=true)
 
+- Abyssal Talon: Increases damage when in the air. Corrupts all Sharp Anchors.
+  
+  ![](https://github.com/quickstraw/StormyItems/blob/master/StormyItems/Items/Icons/TalonIcon.png?raw=true)
+
 ## Currently Working On:
 
 - Testing on multiplayer and testing balance.
@@ -28,7 +32,9 @@
 
 ## Changelog
 
-- 0.9.3 - Added Cracked Halo item displays for whenever item displays are fixed. Added Illegal Drone Coolant.
+- 0.9.4 - Added Charged Urchin item displays. Added Illegal Drone Coolant displays for drones. Added Abyssal Talon.
+
+- 0.9.3 - Added Cracked Halo item displays. Added Illegal Drone Coolant.
 
 - 0.9.2 - Fixed Charged Urchin crashing when user is attacked by the user's own ability. (Fixed crash when using Bomber mod.)
 
