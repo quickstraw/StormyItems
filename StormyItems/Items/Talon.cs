@@ -7,6 +7,7 @@ using UnityEngine;
 using StormyItems.Utils;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StormyItems.Items
 {
@@ -19,7 +20,7 @@ namespace StormyItems.Items
 
         public override string ItemLangTokenName => "TALON";
 
-        public override string ItemPickupDesc => "Increases damage when in the air. <style=cIsVoid>Corrupts all Sharp Anchors.</style>";
+        public override string ItemPickupDesc => "Increases damage when in the air. <style=cIsVoid>Corrupts all Sharp Anchors</style>.";
 
         public override string ItemFullDescription => "Being in the air increases your damage by <style=cIsDamage>15%</style> <style=cStack>(+15% per stack)</style>. <style=cIsVoid>Corrupts all Sharp Anchors.</style>";
 
@@ -32,7 +33,24 @@ namespace StormyItems.Items
         public override GameObject ItemModel => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/Talon/Talon.prefab");
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/Talon/TalonIcon.png");
-        public static List<bool> IsGrounded = new List<bool>();
+
+        public override bool RequiresSOTV => true;
+        public override ItemBase VoidParent()
+        {
+            ItemBase parent;
+            parent = null;
+
+            foreach(ItemBase item in Main.Items)
+            {
+                if(item.ItemLangTokenName == "SHARP_ANCHOR")
+                {
+                    parent = item;
+                    break;
+                }
+            }
+
+            return parent;
+        }
 
 
         //Call Init() in main class
