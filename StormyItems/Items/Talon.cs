@@ -21,7 +21,7 @@ namespace StormyItems.Items
 
         public override string ItemPickupDesc => "Increases damage when in the air. <style=cIsVoid>Corrupts all Sharp Anchors</style>.";
 
-        public override string ItemFullDescription => "Being in the air increases your damage by <style=cIsDamage>15%</style> <style=cStack>(+15% per stack)</style>. <style=cIsVoid>Corrupts all Sharp Anchors.</style>";
+        public override string ItemFullDescription => "Being in the air increases your damage by <style=cIsDamage>15%</style> <style=cStack>(+15% per stack)</style>. <style=cIsVoid>Corrupts all Sharp Anchors</style>.";
 
         public override string ItemLore => "";
 
