@@ -39,15 +39,6 @@ namespace StormyItems.Items
             CreateLang();
             CreateItem();
 
-            //Add associated buff
-            buffDef = ScriptableObject.CreateInstance<BuffDef>();
-            buffDef.iconSprite = ItemDef.pickupIconSprite;
-            buffDef.name = "Cracked Halo";
-            buffDef.isDebuff = false;
-            buffDef.canStack = false;
-            buffDef.buffColor = new Color(246, 255, 71);
-            ContentAddition.AddBuffDef(buffDef);
-
             //But now we have defined an item, but it doesn't do anything yet. So we'll need to define that ourselves.
             RecalculateStatsAPI.GetStatCoefficients += OnGetStatCoefficients;
         }
@@ -245,46 +236,5 @@ namespace StormyItems.Items
             return rules;
         }
 
-        public override void OnFixedUpdate()
-        {
-            if (NetworkServer.active)
-            {
-                ProvideBuff();
-            }
-        }
-
-        private void ProvideBuff()
-        {
-            if(!(PlayerCharacterMasterController.instances.Count > 0 && PlayerCharacterMasterController.instances[0].master.GetBody() != null))
-            {
-                return;
-            }
-            for(int i = 0; i < Main.CharBodies.Count; i++)
-            {
-                CharacterBody currChar = Main.CharBodies[i];
-
-                if(!currChar || !currChar.inventory || !currChar.characterMotor)
-                {
-                    continue;
-                }
-
-                int haloCount = GetCount(currChar);
-
-                if (haloCount > 0 && !currChar.characterMotor.isGrounded)
-                {
-                    currChar.AddBuff(buffDef);
-                }
-
-                if (currChar.HasBuff(buffDef))
-                {
-                    if (haloCount <= 0 || currChar.characterMotor.isGrounded)
-                    {
-                        // Set dirty bit to recalculate stats
-                        currChar.MarkAllStatsDirty();
-                        currChar.RemoveBuff(buffDef);
-                    }
-                }
-            }
-        }
     }
 }
