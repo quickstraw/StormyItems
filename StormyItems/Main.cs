@@ -10,6 +10,7 @@ using UnityEngine;
 using System;
 using UnityEngine.AddressableAssets;
 using RoR2.ExpansionManagement;
+using RoR2.Items;
 
 namespace StormyItems
 {
@@ -64,16 +65,6 @@ namespace StormyItems
                     item.StartInit(Config);
                 }
             }
-            List<ItemDef.Pair> newVoidPairs = new List<ItemDef.Pair>();
-            foreach(var item in tempItems)
-            {
-                if (item.RequiresSOTV)
-                {
-                    item.AddVoidPair(newVoidPairs);
-                }
-            }
-            var voidPairs = ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem];
-            ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] = voidPairs.Union(newVoidPairs).ToArray();
         }
 
         //The Awake() method is run at the very start when the game is initialized.
@@ -86,6 +77,7 @@ namespace StormyItems
 
             CharacterBody.onBodyStartGlobal += CollectBodies;
             CharacterBody.onBodyDestroyGlobal += DestroyBodies;
+            On.RoR2.Items.ContagiousItemManager.Init += AddVoidItemsToDict;
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -205,6 +197,26 @@ namespace StormyItems
                     }
                 }
             }
+        }
+
+        private void AddVoidItemsToDict(On.RoR2.Items.ContagiousItemManager.orig_Init orig)
+        {
+            List<ItemDef.Pair> newVoidPairs = new List<ItemDef.Pair>();
+            Log.LogMessage("Adding Void Pairs...");
+            foreach (var item in Items)
+            {
+                if (item.RequiresSOTV)
+                {
+                    item.AddVoidPair(newVoidPairs);
+                }
+            }
+            var key = DLC1Content.ItemRelationshipTypes.ContagiousItem;
+            Log.LogMessage(key);
+            var voidPairs = ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem];
+            Log.LogMessage("Finishing Void Pairs...");
+            ItemCatalog.itemRelationships[DLC1Content.ItemRelationshipTypes.ContagiousItem] = voidPairs.Union(newVoidPairs).ToArray();
+
+            orig();
         }
 
     }
