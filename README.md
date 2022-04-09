@@ -32,7 +32,9 @@
 
 ## Changelog
 
-- 0.9.4 - Added Charged Urchin item displays. Added Illegal Drone Coolant displays for drones. Added Abyssal Talon.
+- 0.9.5 - Removed unused data structures. Added checks to array bounds in Sharp Anchor to fix incompatibility with Wisp survivor.
+
+- 0.9.4 - Changed how in the air stat changes work, so buffs are no longer used. Added Charged Urchin item displays. Added Illegal Drone Coolant displays for drones. Added Abyssal Talon.
 
 - 0.9.3 - Added Cracked Halo item displays. Added Illegal Drone Coolant.
 

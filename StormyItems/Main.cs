@@ -38,7 +38,7 @@ namespace StormyItems
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.9.4";
+        public const string PluginVersion = "0.9.5";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
         public static List<bool> IsGrounded = new List<bool>();
@@ -127,6 +127,7 @@ namespace StormyItems
                 itemList.Add(item);
                 return true;
             }
+
             var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
             
             bool defValue = false;
