@@ -34,7 +34,6 @@ namespace StormyItems.Items
         public static GameObject ZonePrefab => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab");
 
         public static List<GameObject> Zones = new List<GameObject>();
-        private List<bool> flags = new List<bool>();
 
         public static RoR2.BuffDef buffDef;
 
@@ -85,7 +84,6 @@ namespace StormyItems.Items
         public override void OnBodyAdded(RoR2.CharacterBody body)
         {
             Zones.Add(null);
-            flags.Add(false);
         }
 
         public override void OnBodyRemoved(RoR2.CharacterBody body, int index)
@@ -97,10 +95,6 @@ namespace StormyItems.Items
                     UnityEngine.Object.Destroy(Zones[index]);
                 }
                 Zones.RemoveAt(index);
-            }
-            if(index < flags.Count)
-            {
-                flags.RemoveAt(index);
             }
         }
 
@@ -116,6 +110,10 @@ namespace StormyItems.Items
                 {
                     for (int i = 0; i < Main.CharBodies.Count; i++)
                     {
+                        if(i >= Main.CharBodies.Count || i >= Zones.Count)
+                        {
+                            continue;
+                        }
                         RoR2.CharacterBody currChar = Main.CharBodies[i];
                         if (currChar.inventory != null)
                         {
@@ -136,7 +134,6 @@ namespace StormyItems.Items
                                     anchorZone.Networkradius = networkradius;
                                     NetworkServer.Spawn(ZoneObject);
                                     Zones[i] = ZoneObject;
-                                    flags[i] = true;
                                 }
                             }
                             else if (Zones[i] != null)
