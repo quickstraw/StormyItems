@@ -91,7 +91,7 @@ namespace StormyItems.Items
             ItemDef.pickupIconSprite = ItemIcon;
             ItemDef.hidden = false;
             ItemDef.canRemove = CanRemove;
-            ItemDef.tier = Tier;
+            ItemDef.deprecatedTier = Tier;
 
             if (RequiresSOTV)
             {

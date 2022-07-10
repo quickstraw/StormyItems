@@ -20,7 +20,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="BepInEx.Core" Version="5.4.19" />
-    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.1-r.0" />
+    <PackageReference Include="R2API" Version="4.4.1" />
+    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.4-r.0" />
     <PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
   </ItemGroup>
 
@@ -28,15 +29,8 @@
     <Reference Include="KinematicCharacterController">
       <HintPath>libs\KinematicCharacterController.dll</HintPath>
     </Reference>
-    <Reference Include="MMHOOK_RoR2">
-      <HintPath>libs\MMHOOK_RoR2.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Security">
       <HintPath>libs\Mono.Security.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="R2API">
-      <HintPath>libs\R2API.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="SimpleJSON">
