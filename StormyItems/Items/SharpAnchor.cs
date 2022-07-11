@@ -31,6 +31,8 @@ namespace StormyItems.Items
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorIcon.png");
 
+        public override Sprite BuffIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorBuffIcon.png");
+
         public static GameObject ZonePrefab => Assets.MainAssets.LoadAsset<GameObject>("Assets/Import/SharpAnchor/sharp_anchor_zone/SharpAnchorZone.prefab");
 
         public static List<GameObject> Zones = new List<GameObject>();
@@ -50,11 +52,11 @@ namespace StormyItems.Items
 
             //Add associated buff
             buffDef = ScriptableObject.CreateInstance<RoR2.BuffDef>();
-            buffDef.iconSprite = ItemDef.pickupIconSprite;
+            buffDef.iconSprite = BuffIcon;
             buffDef.name = "Sharp Anchor";
             buffDef.isDebuff = false;
             buffDef.canStack = true;
-            buffDef.buffColor = new Color(250, 106, 10);
+            buffDef.buffColor = new Color(229, 114, 177);
             ContentAddition.AddBuffDef(buffDef);
 
             RecalculateStatsAPI.GetStatCoefficients += OnGetStatCoefficients;

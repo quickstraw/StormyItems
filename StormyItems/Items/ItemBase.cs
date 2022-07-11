@@ -26,6 +26,8 @@ namespace StormyItems.Items
         public abstract GameObject ItemModel { get; }
         public abstract Sprite ItemIcon { get; }
 
+        public virtual Sprite BuffIcon { get; }
+
         public ItemDef ItemDef;
 
         public virtual bool CanRemove { get; } = true;

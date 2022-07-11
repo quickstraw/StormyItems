@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3396240658
+CRC: 2118939138
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5fe8e548a00141e06765b2d933b847ab
+    Hash: 4993b9ce20ce762232b35455cd953794
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7c313ee756765bb0821454b00b286c3f
@@ -39,6 +39,7 @@ Assets:
 - Assets/Import/ChargedUrchin/ChargedUrchinIcon.png
 - Assets/Import/Talon/TalonIcon.png
 - Assets/Import/cracked_halo/crackedhalo_display.prefab
+- Assets/Import/SharpAnchor/sharp_anchor_icon/SharpAnchorBuffIcon.png
 - Assets/Import/DroneCoolant/DroneCoolantPickup.prefab
 - Assets/Import/DroneCoolant/DroneCoolantBoostDisplay.prefab
 - Assets/Import/cracked_halo_icon/CrackedHaloIcon.png

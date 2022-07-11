@@ -14,10 +14,7 @@ using RoR2.Items;
 
 namespace StormyItems
 {
-    //This is an example plugin that can be put in BepInEx/plugins/ExamplePlugin/ExamplePlugin.dll to test out.
-    //It's a small plugin that adds a relatively simple item to the game, and gives you that item whenever you press F2.
-
-    //This attribute specifies that we have a dependency on R2API, as we're using it to add our item to the game.
+    //This attribute specifies that we have a dependency on R2API, as we're using it to add our items to the game.
     //You don't need this if you're not using R2API in your plugin, it's just to tell BepInEx to initialize R2API before this plugin so it's safe to use R2API.
     [BepInDependency(R2API.R2API.PluginGUID)]
 
@@ -34,11 +31,10 @@ namespace StormyItems
         public static PluginInfo PInfo { get; private set; }
 
         //The Plugin GUID should be a unique ID for this plugin, which is human readable (as it is used in places like the config).
-        //If we see this PluginGUID as it is on thunderstore, we will deprecate this mod. Change the PluginAuthor and the PluginName !
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.9.5";
+        public const string PluginVersion = "0.9.7";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
         public static List<bool> IsGrounded = new List<bool>();

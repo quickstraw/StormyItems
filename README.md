@@ -1,6 +1,8 @@
 # StormyItems
 
-<p>Adds a few items that build on vanilla ideas. I want to make items that make certain builds and playstyles more viable. Please let me know if there are any bugs or crashes.</p>
+Adds a few items that build on vanilla ideas. I want to make items that make certain builds and playstyles more viable. Please let me know if there are any bugs or crashes.
+
+IMPORTANT: Seriously, let me know if the mod no longer works. I dip in and out of Risk of Rain 2, but I will update my mod if I know it is broken. DM me on Discord @quickstraw#6646 or make an issue on my GitHub linked on this page.
 
 - Cracked Halo: Increases movement speed when in the air. 
   
@@ -24,13 +26,13 @@
 
 ## Currently Working On:
 
-- Testing on multiplayer and testing balance.
-
-- Making icons for buffs.
+- Improve stability and balance.
 
 - Making item displays.
 
 ## Changelog
+
+- 0.9.6 - Fixed items for the latest update. Added an icon for the anchor buff.
 
 - 0.9.5 - Removed unused data structures. Added checks to array bounds in Sharp Anchor to fix incompatibility with Wisp survivor.
 
