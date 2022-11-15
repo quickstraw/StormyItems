@@ -30,7 +30,11 @@ IMPORTANT: Seriously, let me know if the mod no longer works. I dip in and out o
 
 - Making item displays.
 
+- Thinking of more items. (I like to make items for playstyles that don't have as much variety.)
+
 ## Changelog
+
+- 0.9.8 - Added more item displays. Fixed rare crash with Charged Urchin and certain mods.
 
 - 0.9.6 - Fixed items for the latest update. Added an icon for the anchor buff.
 
