@@ -21,8 +21,6 @@ namespace StormyItems
     //This attribute is required, and lists metadata for your plugin.
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    //We will be using 2 modules from R2API: ItemAPI to add our item and LanguageAPI to add our language tokens.
-    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI), nameof(RecalculateStatsAPI), nameof(PrefabAPI))]
 
     //This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
@@ -34,7 +32,7 @@ namespace StormyItems
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.9.8";
+        public const string PluginVersion = "0.9.9";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
         public static List<bool> IsGrounded = new List<bool>();
@@ -75,6 +73,9 @@ namespace StormyItems
             CharacterBody.onBodyDestroyGlobal += DestroyBodies;
             On.RoR2.Items.ContagiousItemManager.Init += AddVoidItemsToDict;
 
+            On.RoR2.CharacterMotor.OnLanded += CharacterMotor_OnLanded;
+            On.RoR2.CharacterMotor.OnLeaveStableGround += CharacterMotor_OnLeaveStableGround;
+
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
         }
@@ -107,7 +108,6 @@ namespace StormyItems
             {
                 //Log.LogError(e.StackTrace);
             }
-            UpdateBodies();
         }
 
         /// <summary>
@@ -179,21 +179,17 @@ namespace StormyItems
             }
         }
 
-        private void UpdateBodies()
+        // Hooks for "in the air" items
+        private void CharacterMotor_OnLeaveStableGround(On.RoR2.CharacterMotor.orig_OnLeaveStableGround orig, CharacterMotor self)
         {
-            for(int i = 0; i < CharBodies.Count; i++)
-            {
-                var body = CharBodies[i];
-                if(body != null && body.characterMotor != null)
-                {
-                    bool grounded = body.characterMotor.isGrounded;
-                    if(grounded != IsGrounded[i])
-                    {
-                        IsGrounded[i] = grounded;
-                        body.MarkAllStatsDirty();
-                    }
-                }
-            }
+            self.body.MarkAllStatsDirty();
+            orig(self);
+        }
+
+        private void CharacterMotor_OnLanded(On.RoR2.CharacterMotor.orig_OnLanded orig, CharacterMotor self)
+        {
+            self.body.MarkAllStatsDirty();
+            orig(self);
         }
 
         private void AddVoidItemsToDict(On.RoR2.Items.ContagiousItemManager.orig_Init orig)

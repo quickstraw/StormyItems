@@ -34,6 +34,8 @@ IMPORTANT: Seriously, let me know if the mod no longer works. I dip in and out o
 
 ## Changelog
 
+- 0.9.9 - Increased responsiveness of "in the air" items. Thanks to hifoomin for figuring that out.
+
 - 0.9.8 - Added more item displays. Fixed rare crash with Charged Urchin and certain mods.
 
 - 0.9.6 - Fixed items for the latest update. Added an icon for the anchor buff.
