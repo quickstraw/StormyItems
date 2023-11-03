@@ -73,9 +73,9 @@ namespace StormyItems.Items
                 int count = GetCount(self.body);
                 if (count > 0 && self && self.shield > 0)
                 {
-                    //float sDamage = damageInfo.damage * count *  0.8f;
                     float sDamage = self.body.damage * count * 0.8f;
-                    if (damageInfo.attacker && damageInfo.attacker.GetComponent<HealthComponent>())
+                    if (damageInfo.attacker && damageInfo.attacker.GetComponent<HealthComponent>()
+                        && damageInfo.attacker.GetComponent<CharacterBody>().teamComponent.teamIndex != self.body.teamComponent.teamIndex) // No friendly fire
                     {
                         bool damagedByOther = damageInfo.attacker.GetComponent<HealthComponent>().body != self.body; // If you didn't damage yourself...
                         bool damagedByNonShock = damageInfo.damageType != DamageType.Shock5s; // If the damage isn't shock (not from another urchin)...
