@@ -1,16 +1,11 @@
 ﻿using BepInEx;
 using StormyItems.Items;
-using R2API;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
 using System;
-using UnityEngine.AddressableAssets;
-using RoR2.ExpansionManagement;
-using RoR2.Items;
 
 namespace StormyItems
 {
@@ -32,7 +27,7 @@ namespace StormyItems
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.9.10";
+        public const string PluginVersion = "0.9.11";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
         public static List<bool> IsGrounded = new List<bool>();

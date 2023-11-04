@@ -1,11 +1,8 @@
 ﻿using BepInEx.Configuration;
 using R2API;
 using RoR2;
-using RoR2.Projectile;
 using StormyItems.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

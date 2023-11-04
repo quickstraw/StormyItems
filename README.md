@@ -34,6 +34,8 @@ IMPORTANT: Seriously, let me know if the mod no longer works. I dip in and out o
 
 ## Changelog
 
+- 0.9.11 - Fixed Drone Boost being a Tier 1 item.
+
 - 0.9.10 - Added a team check to Charged Urchin to not trigger on friendly fire.
 
 - 0.9.9 - Increased responsiveness of "in the air" items. Thanks to hifoomin for figuring that out.

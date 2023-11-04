@@ -7,6 +7,7 @@ using UnityEngine;
 using RoR2.Items;
 using RoR2.ExpansionManagement;
 using System.Linq;
+using UnityEngine.AddressableAssets;
 
 namespace StormyItems.Items
 {
@@ -76,6 +77,7 @@ namespace StormyItems.Items
 
         public abstract ItemDisplayRuleDict CreateItemDisplayRules();
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Member Access", "Publicizer001:Accessing a member that was not originally public", Justification = "<Pending>")]
         protected void CreateItem()
         {
             if (AIBlacklisted)
@@ -93,7 +95,44 @@ namespace StormyItems.Items
             ItemDef.pickupIconSprite = ItemIcon;
             ItemDef.hidden = false;
             ItemDef.canRemove = CanRemove;
-            ItemDef.deprecatedTier = Tier;
+            switch (Tier)
+            {
+                case ItemTier.NoTier:
+#pragma warning disable CS0618 // Type or member is obsolete
+                    ItemDef.deprecatedTier = ItemTier.NoTier;
+#pragma warning restore CS0618 // Type or member is obsolete
+                    break;
+                case ItemTier.Tier1:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier1Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.Tier2:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier2Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.Tier3:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier3Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.Boss:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/BossTierDef.asset").WaitForCompletion();
+                    break;
+                case ItemTier.Lunar:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/LunarTierDef.asset").WaitForCompletion();
+                    break;
+                case ItemTier.VoidTier1:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/DLC1/Common/VoidTier1Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.VoidTier2:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/DLC1/Common/VoidTier2Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.VoidTier3:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/DLC1/Common/VoidTier3Def.asset").WaitForCompletion();
+                    break;
+                case ItemTier.VoidBoss:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/DLC1/Common/VoidBossDef.asset").WaitForCompletion();
+                    break;
+                default:
+                    ItemDef._itemTierDef = Addressables.LoadAssetAsync<ItemTierDef>("RoR2/Base/Common/Tier1Def.asset").WaitForCompletion();
+                    break;
+            }
 
             if (RequiresSOTV)
             {
