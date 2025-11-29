@@ -27,7 +27,7 @@ namespace StormyItems
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Quickstraw";
         public const string PluginName = "StormyItems";
-        public const string PluginVersion = "0.10.0";
+        public const string PluginVersion = "0.10.1";
 
         public static List<CharacterBody> CharBodies = new List<CharacterBody>();
         public static List<bool> IsGrounded = new List<bool>();
@@ -170,13 +170,13 @@ namespace StormyItems
         // Hooks for "in the air" items
         private void CharacterMotor_OnLeaveStableGround(On.RoR2.CharacterMotor.orig_OnLeaveStableGround orig, CharacterMotor self)
         {
-            self.body.MarkAllStatsDirty();
+            self?.body?.MarkAllStatsDirty();
             orig(self);
         }
 
         private void CharacterMotor_OnLanded(On.RoR2.CharacterMotor.orig_OnLanded orig, CharacterMotor self)
         {
-            self.body.MarkAllStatsDirty();
+            self?.body?.MarkAllStatsDirty();
             orig(self);
         }
 
