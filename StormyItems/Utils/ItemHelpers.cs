@@ -143,7 +143,7 @@ namespace StormyItems.Utils
             {
                 if (index != RoR2.DotController.DotIndex.None)
                 {
-                    RoR2.DotController.InflictDot(body.gameObject, body.gameObject, index, duration, 0.25f);
+                    RoR2.DotController.InflictDot(body.gameObject, body.gameObject, body.mainHurtBox, index, duration, 0.25f);
                 }
                 else
                 {

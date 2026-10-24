@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace StormyItems.Items
 {
@@ -29,6 +30,8 @@ namespace StormyItems.Items
 
         public override Sprite ItemIcon => Assets.MainAssets.LoadAsset<Sprite>("Assets/Import/DroneCoolant/DroneCoolantIcon.png");
 
+        private ItemDef boost;
+
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
             return new ItemDisplayRuleDict();
@@ -50,33 +53,27 @@ namespace StormyItems.Items
 
         private void OnServerMasterSummonGlobal(MasterSummon.MasterSummonReport summonReport)
         {
-            if (summonReport.leaderMasterInstance)
+            CharacterMaster leaderMaster = summonReport.leaderMasterInstance;
+            CharacterMaster summonMasterInstance = summonReport.summonMasterInstance;
+            if (leaderMaster && summonMasterInstance)
             {
-                CharacterMaster summonMasterInstance = summonReport.summonMasterInstance;
-                if (summonMasterInstance)
+                CharacterBody body = summonMasterInstance.GetBody();
+                if (body)
                 {
-                    CharacterBody body = summonMasterInstance.GetBody();
-                    if (body)
-                    {
-                        int count = GetCount(body);
-                        UpdateMinionInventory(count, summonMasterInstance.inventory, body.bodyFlags);
-                    }
+                    //Count comes from the leader, not the newly summoned drone
+                    UpdateMinionInventory(GetCount(leaderMaster), summonMasterInstance.inventory, body.bodyFlags);
                 }
             }
         }
 
         private void OnInventoryChanged(CharacterBody body)
         {
-            int count = GetCount(body);
-            if(count > 0)
+            if (!NetworkServer.active)
             {
-                UpdateAllMinions(body);
+                return;
             }
-        }
-
-        public override void OnFixedUpdate()
-        {
-            base.OnFixedUpdate();
+            //Runs even when the count is 0 so drones lose the boost when the item is removed
+            UpdateAllMinions(body);
         }
 
         private void UpdateAllMinions(CharacterBody body)
@@ -86,6 +83,7 @@ namespace StormyItems.Items
                 MinionOwnership.MinionGroup minionGroup = MinionOwnership.MinionGroup.FindGroup(body.master.netId);
                 if (minionGroup != null)
                 {
+                    int count = GetCount(body);
                     foreach (MinionOwnership minionOwnership in minionGroup.members)
                     {
                         if (minionOwnership)
@@ -96,12 +94,11 @@ namespace StormyItems.Items
                                 CharacterBody droneBody = droneMaster.GetBody();
                                 if (droneBody)
                                 {
-                                    UpdateMinionInventory(GetCount(body), droneMaster.inventory, droneBody.bodyFlags);
+                                    UpdateMinionInventory(count, droneMaster.inventory, droneBody.bodyFlags);
                                 }
                             }
                         }
                     }
-                    //this.previousStack = newStack;
                 }
             }
         }
@@ -109,35 +106,40 @@ namespace StormyItems.Items
         private void UpdateMinionInventory(int stack, Inventory inventory, CharacterBody.BodyFlags bodyFlags)
         {
             ItemDef boost = GetBoost();
-            if (inventory && stack > 0 && (bodyFlags & CharacterBody.BodyFlags.Mechanical) > CharacterBody.BodyFlags.None)
+            if (!inventory || !boost)
             {
-                int itemCount = inventory.GetItemCount(boost);
-                if (itemCount < stack)
-                {
-                    inventory.GiveItem(boost, stack - itemCount);
-                }
-                else if (itemCount > stack)
-                {
-                    inventory.RemoveItem(boost, itemCount - stack);
-                }
+                return;
             }
-            else
+            if ((bodyFlags & CharacterBody.BodyFlags.Mechanical) == CharacterBody.BodyFlags.None)
             {
-                inventory.ResetItem(boost);
+                stack = 0;
+            }
+
+            int itemCount = inventory.GetItemCountPermanent(boost);
+            if (itemCount < stack)
+            {
+                inventory.GiveItemPermanent(boost, stack - itemCount);
+            }
+            else if (itemCount > stack)
+            {
+                inventory.RemoveItemPermanent(boost, itemCount - stack);
             }
         }
 
         private ItemDef GetBoost()
         {
-            ItemBase outItem = null;
-            foreach(ItemBase item in Main.Items)
+            if (!boost)
             {
-                if(item.ItemLangTokenName == "DRONE_COOLANT_BOOST")
+                foreach (ItemBase item in Main.Items)
                 {
-                    outItem = item;
+                    if (item.ItemLangTokenName == "DRONE_COOLANT_BOOST")
+                    {
+                        boost = item.ItemDef;
+                        break;
+                    }
                 }
             }
-            return outItem.ItemDef;
+            return boost;
         }
 
     }

@@ -114,10 +114,7 @@ namespace StormyItems.Items
                     localPos = new Vector3(-0.03504F, 0.45371F, 0.37431F),
                     localAngles = new Vector3(0F, 0F, 0F),
                     localScale = new Vector3(0.15F, 0.15F, 0.15F)
-                }
-            });
-            rules.Add("mdlMegaDrone", new RoR2.ItemDisplayRule[]
-            {
+                },
                 new RoR2.ItemDisplayRule
                 {
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
@@ -167,12 +164,13 @@ namespace StormyItems.Items
             CharacterBody inflictor = damageReport.attackerBody;
             CharacterBody victim = damageReport.victimBody;
 
-            if(inflictor && victim)
+            //Burn ticks have no proc coefficient, without this check they keep re-rolling new burns
+            if(inflictor && victim && damageReport.damageInfo.procCoefficient > 0f)
             {
                 int count = GetCount(inflictor);
                 if(count > 0 && inflictor.master)
                 {
-                    var odds = 20.0f;
+                    var odds = 20.0f * damageReport.damageInfo.procCoefficient;
                     var isProcced = Util.CheckRoll(odds, inflictor.master);
                     if (isProcced)
                     {
