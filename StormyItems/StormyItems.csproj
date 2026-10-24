@@ -19,19 +19,23 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
-    <PackageReference Include="R2API.Core" Version="5.1.1" />
-    <PackageReference Include="R2API.Items" Version="1.0.3" />
-    <PackageReference Include="R2API.Language" Version="1.0.1" />
-    <PackageReference Include="R2API.Prefab" Version="1.0.4" />
-    <PackageReference Include="R2API.RecalculateStats" Version="1.4.0" />
-    <PackageReference Include="RiskOfRain2.GameLibs" Version="1.3.1.275-r.0" />
-	<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
+    <PackageReference Include="BepInEx.Core" Version="*" />
+    <PackageReference Include="R2API.Core" Version="*" />
+    <PackageReference Include="R2API.Items" Version="*" />
+    <PackageReference Include="R2API.Language" Version="*" />
+    <PackageReference Include="R2API.Prefab" Version="*" />
+    <PackageReference Include="R2API.RecalculateStats" Version="*" />
+    <PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+	<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="KinematicCharacterController">
       <HintPath>libs\KinematicCharacterController.dll</HintPath>
+    </Reference>
+    <Reference Include="LookingGlass">
+      <HintPath>libs\LookingGlass.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Mono.Security">
       <HintPath>libs\Mono.Security.dll</HintPath>
