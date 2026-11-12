@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace StormyItems.Items
 {
@@ -58,7 +59,7 @@ namespace StormyItems.Items
                     CharacterBody body = summonMasterInstance.GetBody();
                     if (body)
                     {
-                        int count = GetCount(body);
+                        int count = GetCount(summonReport.leaderMasterInstance);
                         UpdateMinionInventory(count, summonMasterInstance.inventory, body.bodyFlags);
                     }
                 }
@@ -67,8 +68,7 @@ namespace StormyItems.Items
 
         private void OnInventoryChanged(CharacterBody body)
         {
-            int count = GetCount(body);
-            if(count > 0)
+            if (NetworkServer.active)
             {
                 UpdateAllMinions(body);
             }
@@ -108,22 +108,26 @@ namespace StormyItems.Items
 
         private void UpdateMinionInventory(int stack, Inventory inventory, CharacterBody.BodyFlags bodyFlags)
         {
-            ItemDef boost = GetBoost();
-            if (inventory && stack > 0 && (bodyFlags & CharacterBody.BodyFlags.Mechanical) > CharacterBody.BodyFlags.None)
+            if (!NetworkServer.active || !inventory)
             {
-                int itemCount = inventory.GetItemCount(boost);
-                if (itemCount < stack)
-                {
-                    inventory.GiveItem(boost, stack - itemCount);
-                }
-                else if (itemCount > stack)
-                {
-                    inventory.RemoveItem(boost, itemCount - stack);
-                }
+                return;
             }
-            else
+
+            ItemDef boost = GetBoost();
+            if (!boost)
             {
-                inventory.ResetItem(boost);
+                return;
+            }
+
+            int targetCount = (bodyFlags & CharacterBody.BodyFlags.Mechanical) != CharacterBody.BodyFlags.None ? Math.Max(0, stack) : 0;
+            int itemCount = inventory.GetItemCountPermanent(boost.itemIndex);
+            if (itemCount < targetCount)
+            {
+                inventory.GiveItemPermanent(boost.itemIndex, targetCount - itemCount);
+            }
+            else if (itemCount > targetCount)
+            {
+                inventory.RemoveItemPermanent(boost.itemIndex, itemCount - targetCount);
             }
         }
 
@@ -137,7 +141,7 @@ namespace StormyItems.Items
                     outItem = item;
                 }
             }
-            return outItem.ItemDef;
+            return outItem?.ItemDef;
         }
 
     }

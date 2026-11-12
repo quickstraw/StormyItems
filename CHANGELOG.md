@@ -1,5 +1,7 @@
 ## Changelog
 
+- 0.10.2 - Updated for the DLC4. Fixed Illegal Drone Coolant triggering extra burn under certain circumstances.
+
 - 0.10.1 - Updated for new expansion. Added null checks.
 
 - 0.10.0 - Updated for new expansion.

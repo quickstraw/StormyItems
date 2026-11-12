@@ -288,7 +288,7 @@ namespace StormyItems.Items
                         RoR2.CharacterBody currChar = Main.CharBodies[i];
                         if (currChar.inventory != null)
                         {
-                            int anchorCount = currChar.inventory.GetItemCount(ItemDef.itemIndex);
+                            int anchorCount = currChar.inventory.GetItemCountEffective(ItemDef.itemIndex);
                             GameObject ZoneObject = Zones[i];
                             if (Zones[i] == null)
                             {

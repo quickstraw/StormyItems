@@ -164,6 +164,11 @@ namespace StormyItems.Items
 
         private void OnServerDamageDealt(DamageReport damageReport)
         {
+            if (damageReport.damageInfo.procCoefficient <= 0f)
+            {
+                return;
+            }
+
             CharacterBody inflictor = damageReport.attackerBody;
             CharacterBody victim = damageReport.victimBody;
 

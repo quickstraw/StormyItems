@@ -51,7 +51,7 @@ namespace StormyItems.Items
         {
             if(body != null && args != null && body.inventory != null)
             {
-                int haloCount = body.inventory.GetItemCount(ItemDef);
+                int haloCount = body.inventory.GetItemCountEffective(ItemDef);
                 if (haloCount > 0 && body.characterMotor != null && !body.characterMotor.isGrounded)
                 {
                     args.moveSpeedMultAdd += (0.25f * haloCount);

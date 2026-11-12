@@ -81,7 +81,7 @@ namespace StormyItems.Items
 							break;
 						}
 					}
-					count = charBody.inventory.GetItemCount(Main.Items[index].ItemDef);
+					count = charBody.inventory.GetItemCountEffective(Main.Items[index].ItemDef);
 					break;
 				}
 			}
